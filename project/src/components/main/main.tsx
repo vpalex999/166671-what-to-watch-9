@@ -1,4 +1,4 @@
-import SmallFilmCard from '../SmallFilmCard';
+import SmallFilmCard from '../small-film-card/SmallFilmCard';
 
 
 type MainScreenProps = {
