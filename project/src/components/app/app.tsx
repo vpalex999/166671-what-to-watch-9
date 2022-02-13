@@ -1,4 +1,4 @@
-import Main from '../../main/main';
+import Main from '../main/main';
 
 type AppScreenProps = {
   promoTitle: string;
