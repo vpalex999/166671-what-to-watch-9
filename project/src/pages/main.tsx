@@ -1,6 +1,13 @@
 import SmallFilmCard from '../components/SmallFilmCard';
 
-function Main(): JSX.Element {
+
+type MainScreenProps = {
+  promoTitle: string;
+  promoGenre: string;
+  promoYear: number;
+}
+
+function Main({ promoTitle, promoGenre, promoYear }: MainScreenProps): JSX.Element {
   return (
     <div>
       <div className="visually-hidden">
@@ -74,10 +81,10 @@ function Main(): JSX.Element {
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">The Grand Budapest Hotel</h2>
+              <h2 className="film-card__title">{promoTitle}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">Drama</span>
-                <span className="film-card__year">2014</span>
+                <span className="film-card__genre">{promoGenre}</span>
+                <span className="film-card__year">{promoYear}</span>
               </p>
 
               <div className="film-card__buttons">
