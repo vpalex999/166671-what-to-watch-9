@@ -1,17 +1,20 @@
 import Main from '../main/main';
 
-type AppScreenProps = {
-  promoTitle: string;
-  promoGenre: string;
-  promoYear: number;
+type PromoFilm = {
+  title: string;
+  genre: string;
+  year: number;
 }
 
-function App({ promoTitle, promoGenre, promoYear }: AppScreenProps): JSX.Element {
+type AppScreenProps = {
+  promo: PromoFilm
+}
+
+
+function App({ promo }: AppScreenProps): JSX.Element {
   return (
     <Main
-      promoTitle={promoTitle}
-      promoGenre={promoGenre}
-      promoYear={promoYear}
+      promo={promo}
     />
   );
 }

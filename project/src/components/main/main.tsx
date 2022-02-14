@@ -1,13 +1,17 @@
 import SmallFilmCard from '../small-film-card/small-film-card';
 
-
-type MainScreenProps = {
-  promoTitle: string;
-  promoGenre: string;
-  promoYear: number;
+type PromoFilm = {
+  title: string;
+  genre: string;
+  year: number;
 }
 
-function Main({ promoTitle, promoGenre, promoYear }: MainScreenProps): JSX.Element {
+type MainScreenProps = {
+  promo: PromoFilm;
+}
+
+function Main({ promo }: MainScreenProps): JSX.Element {
+  const { title: promoTitle, genre: promoGenre, year: promoYear } = promo;
   return (
     <div>
       <section className="film-card">
