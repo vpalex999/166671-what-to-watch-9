@@ -5,7 +5,9 @@ import Main from './pages/main/main';
 import MyList from './pages/my-list/my-list';
 import Play from './pages/play/play';
 import SignIn from './pages/sign-in/sign-in';
+import PrivateRoute from './components/private-route/private-route';
 import NotFound from './pages/not-found/not-found';
+import { AppRoute, AuthorizationStatus } from './const';
 
 type PromoFilm = {
   title: string;
@@ -23,27 +25,33 @@ function App({ promo }: AppScreenProps): JSX.Element {
     <BrowserRouter>
       <Routes>
         <Route
-          path="/"
+          path={AppRoute.Root}
           element={<Main promo={promo} />}
         />
         <Route
-          path="/login"
+          path={AppRoute.Login}
           element={<SignIn />}
         />
         <Route
-          path="/mylist"
-          element={<MyList />}
+          path={AppRoute.MyList}
+          element={
+            <PrivateRoute
+              authorizationStatus={AuthorizationStatus.NoAuth}
+            >
+              <MyList />
+            </PrivateRoute>
+          }
         />
         <Route
-          path="/films/:id"
+          path={AppRoute.Film}
           element={<Film />}
         />
         <Route
-          path="/films/:id/review"
+          path={AppRoute.AddReview}
           element={<AddReview />}
         />
         <Route
-          path="/player/:id"
+          path={AppRoute.Play}
           element={<Play />}
         />
         <Route
