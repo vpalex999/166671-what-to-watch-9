@@ -1,4 +1,4 @@
-import SmallFilmCard from '../small-film-card/small-film-card';
+import SmallFilmCard from '../../components/small-film-card/small-film-card';
 
 type PromoFilm = {
   title: string;
