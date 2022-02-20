@@ -1,4 +1,4 @@
-function SingIn(): JSX.Element {
+function SignIn(): JSX.Element {
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
@@ -48,4 +48,4 @@ function SingIn(): JSX.Element {
   );
 }
 
-export default SingIn;
+export default SignIn;
