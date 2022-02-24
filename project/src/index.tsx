@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './app';
+import { mokFilmList } from './moks/films';
 
 type PromoFilm = {
   title: string;
   genre: string;
   year: number;
-}
+};
 
 const promoFilm: PromoFilm = {
   title: 'The Grand Budapest Hotel',
@@ -16,8 +17,7 @@ const promoFilm: PromoFilm = {
 
 ReactDOM.render(
   <React.StrictMode>
-    <App
-      promo={promoFilm}
-    />
+    <App promo={promoFilm} />
   </React.StrictMode>,
-  document.getElementById('root'));
+  document.getElementById('root')
+);

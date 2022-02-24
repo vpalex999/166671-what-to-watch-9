@@ -9,7 +9,7 @@ const enum Genre {
   Mystery = 'Mystery',
 }
 
-const films: Film[] = [
+const mokFilmList: Film[] = [
   {
     id: '12345',
     title: 'Fantastic Beasts: The Crimes of Grindelwald',
@@ -148,4 +148,4 @@ const films: Film[] = [
   },
 ];
 
-export { films };
+export { mokFilmList };
