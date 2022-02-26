@@ -28,7 +28,12 @@ function App({ promo, films }: AppScreenProps): JSX.Element {
       <Routes>
         <Route
           path={AppRoute.Root}
-          element={<Main promo={promo} />}
+          element={
+            <Main
+              promo={promo}
+              films={films}
+            />
+          }
         />
         <Route
           path={AppRoute.Login}

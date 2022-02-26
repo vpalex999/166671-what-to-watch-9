@@ -1,4 +1,5 @@
-import SmallFilmCard from '../../components/small-film-card/small-film-card';
+import FilmList from '../../components/film-list/film-list';
+import { FilmData } from '../../types/film';
 
 type PromoFilm = {
   title: string;
@@ -8,9 +9,10 @@ type PromoFilm = {
 
 type MainScreenProps = {
   promo: PromoFilm;
+  films: FilmData[];
 }
 
-function Main({ promo }: MainScreenProps): JSX.Element {
+function Main({ promo, films }: MainScreenProps): JSX.Element {
   const { title: promoTitle, genre: promoGenre, year: promoYear } = promo;
   return (
     <div>
@@ -111,28 +113,7 @@ function Main({ promo }: MainScreenProps): JSX.Element {
             </li>
           </ul>
 
-          <div className="catalog__films-list">
-            <SmallFilmCard />
-            <SmallFilmCard />
-            <SmallFilmCard />
-            <SmallFilmCard />
-            <SmallFilmCard />
-            <SmallFilmCard />
-            <SmallFilmCard />
-            <SmallFilmCard />
-            <SmallFilmCard />
-            <SmallFilmCard />
-            <SmallFilmCard />
-            <SmallFilmCard />
-            <SmallFilmCard />
-            <SmallFilmCard />
-            <SmallFilmCard />
-            <SmallFilmCard />
-            <SmallFilmCard />
-            <SmallFilmCard />
-            <SmallFilmCard />
-            <SmallFilmCard />
-          </div>
+          <FilmList films={films} />
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
