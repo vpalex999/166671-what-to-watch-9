@@ -8,6 +8,7 @@ import SignIn from './pages/sign-in/sign-in';
 import PrivateRoute from './components/private-route/private-route';
 import NotFound from './pages/not-found/not-found';
 import { AppRoute, AuthorizationStatus } from './const';
+import { FilmData } from './types/film';
 
 type PromoFilm = {
   title: string;
@@ -16,11 +17,12 @@ type PromoFilm = {
 }
 
 type AppScreenProps = {
-  promo: PromoFilm
+  promo: PromoFilm,
+  films: FilmData[]
 }
 
 
-function App({ promo }: AppScreenProps): JSX.Element {
+function App({ promo, films }: AppScreenProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>

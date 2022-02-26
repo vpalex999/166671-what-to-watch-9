@@ -17,7 +17,10 @@ const promoFilm: PromoFilm = {
 
 ReactDOM.render(
   <React.StrictMode>
-    <App promo={promoFilm} />
+    <App
+      promo={promoFilm}
+      films={mokFilmList}
+    />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );

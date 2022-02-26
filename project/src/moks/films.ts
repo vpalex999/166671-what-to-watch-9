@@ -1,4 +1,4 @@
-import { Film } from '../types/film';
+import { FilmData } from '../types/film';
 
 const enum Genre {
   Musical = 'Musical',
@@ -9,7 +9,7 @@ const enum Genre {
   Mystery = 'Mystery',
 }
 
-const mokFilmList: Film[] = [
+const mokFilmList: FilmData[] = [
   {
     id: '12345',
     title: 'Fantastic Beasts: The Crimes of Grindelwald',

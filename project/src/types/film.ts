@@ -4,7 +4,7 @@ type Rating = {
   count: string;
 }
 
-export type Film = {
+export type FilmData = {
   id: string;
   title: string;
   img: string;
