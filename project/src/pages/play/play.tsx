@@ -1,7 +1,13 @@
-function Play(): JSX.Element {
+import { PlayerData } from '../../types/player';
+
+type PlayProps = {
+  data: PlayerData
+}
+
+function Play({data}: PlayProps): JSX.Element {
   return (
     <div className="player">
-      <video src="#" className="player__video" poster="img/player-poster.jpg"></video>
+      <video src="#" className="player__video" poster={data.poster}></video>
 
       <button type="button" className="player__exit">Exit</button>
 
@@ -11,7 +17,7 @@ function Play(): JSX.Element {
             <progress className="player__progress" value="30" max="100"></progress>
             <div className="player__toggler" style={{left: '30%'}}>Toggler</div>
           </div>
-          <div className="player__time-value">1:30:29</div>
+          <div className="player__time-value">{data.playerTime}</div>
         </div>
 
         <div className="player__controls-row">
@@ -21,7 +27,7 @@ function Play(): JSX.Element {
             </svg>
             <span>Play</span>
           </button>
-          <div className="player__name">Transpotting</div>
+          <div className="player__name">{data.title}</div>
 
           <button type="button" className="player__full-screen">
             <svg viewBox="0 0 27 27" width="27" height="27">

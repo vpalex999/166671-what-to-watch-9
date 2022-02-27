@@ -5,7 +5,7 @@ type FilmCardProps = {
 }
 
 function SmallFilmCard({ data }: FilmCardProps): JSX.Element {
-  const { title, img } = data;
+  const { title, backgroung: img } = data;
   return (
     <article className="small-film-card catalog__films-card">
       <div className="small-film-card__image">

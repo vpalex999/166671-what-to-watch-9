@@ -7,7 +7,8 @@ type Rating = {
 export type FilmData = {
   id: string;
   title: string;
-  img: string;
+  backgroung: string;
+  poster: string;
   genre: string;
   released: number;
   runTime: string;

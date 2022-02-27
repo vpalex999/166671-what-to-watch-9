@@ -9,8 +9,10 @@ import PrivateRoute from './components/private-route/private-route';
 import NotFound from './pages/not-found/not-found';
 import { AppRoute, AuthorizationStatus } from './const';
 import { FilmData } from './types/film';
+import { PlayerData } from './types/player';
 
 type PromoFilm = {
+  id: string;
   title: string;
   genre: string;
   year: number;
@@ -19,10 +21,11 @@ type PromoFilm = {
 type AppScreenProps = {
   promo: PromoFilm,
   films: FilmData[]
+  playerData: PlayerData
 }
 
 
-function App({ promo, films }: AppScreenProps): JSX.Element {
+function App({ promo, films, playerData }: AppScreenProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
@@ -43,9 +46,11 @@ function App({ promo, films }: AppScreenProps): JSX.Element {
           path={AppRoute.MyList}
           element={
             <PrivateRoute
-              authorizationStatus={AuthorizationStatus.NoAuth}
+              authorizationStatus={AuthorizationStatus.Auth}
             >
-              <MyList />
+              <MyList
+                films={films}
+              />
             </PrivateRoute>
           }
         />
@@ -55,11 +60,19 @@ function App({ promo, films }: AppScreenProps): JSX.Element {
         />
         <Route
           path={AppRoute.AddReview}
-          element={<AddReview />}
+          element={
+            <AddReview
+              film={films[0]}
+            />
+          }
         />
         <Route
           path={AppRoute.Play}
-          element={<Play />}
+          element={
+            <Play
+              data={playerData}
+            />
+          }
         />
         <Route
           path="*"

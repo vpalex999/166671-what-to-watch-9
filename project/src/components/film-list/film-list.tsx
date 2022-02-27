@@ -1,4 +1,4 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { FilmData } from '../../types/film';
 import SmallFilmCard from '../small-film-card/small-film-card';
 
@@ -7,7 +7,7 @@ type FilmListProps = {
 }
 
 function FilmList({ films }: FilmListProps): JSX.Element {
-  const [activeFilmId, setActiveFilmId] = useState<string>('');
+  // const [activeFilmId, setActiveFilmId] = useState<string>('');
 
   return (
     <div className="catalog__films-list">

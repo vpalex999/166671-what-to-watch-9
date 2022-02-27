@@ -2,17 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './app';
 import { mokFilmList } from './moks/films';
+import { mokPlayerData } from './moks/player';
+
 
 type PromoFilm = {
+  id: string;
   title: string;
   genre: string;
   year: number;
 };
 
 const promoFilm: PromoFilm = {
-  title: 'The Grand Budapest Hotel',
-  genre: 'Drama',
-  year: 2014,
+  id: '1234',
+  title: mokFilmList[0].title,
+  genre: mokFilmList[0].genre,
+  year: mokFilmList[0].released,
 };
 
 ReactDOM.render(
@@ -20,6 +24,7 @@ ReactDOM.render(
     <App
       promo={promoFilm}
       films={mokFilmList}
+      playerData={mokPlayerData}
     />
   </React.StrictMode>,
   document.getElementById('root'),

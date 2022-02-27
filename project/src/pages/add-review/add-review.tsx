@@ -1,9 +1,15 @@
-function AddReview(): JSX.Element {
+import { FilmData } from '../../types/film';
+
+type AddReviewProps = {
+  film: FilmData;
+}
+
+function AddReview({ film }: AddReviewProps): JSX.Element {
   return (
     <section className="film-card film-card--full">
       <div className="film-card__header">
         <div className="film-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+          <img src={film.backgroung} alt={film.title} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -20,7 +26,7 @@ function AddReview(): JSX.Element {
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <a href="film-page.html" className="breadcrumbs__link">The Grand Budapest Hotel</a>
+                <a href="film-page.html" className="breadcrumbs__link">{film.title}</a>
               </li>
               <li className="breadcrumbs__item">
                 <a href="#todo" className="breadcrumbs__link">Add review</a>
@@ -41,7 +47,7 @@ function AddReview(): JSX.Element {
         </header>
 
         <div className="film-card__poster film-card__poster--small">
-          <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+          <img src={film.poster} alt={film.title} width="218" height="327" />
         </div>
       </div>
 
