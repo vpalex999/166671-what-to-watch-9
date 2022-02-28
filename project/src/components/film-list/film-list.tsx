@@ -11,7 +11,11 @@ function FilmList({ films }: FilmListProps): JSX.Element {
 
   return (
     <div className="catalog__films-list">
-      {films.map((data) => <SmallFilmCard key={data.id} data={data} />)}
+      {films.map((data) => (
+        <SmallFilmCard
+          key={data.id}
+          data={data}
+        />))}
     </div>
   );
 }

@@ -1,24 +1,21 @@
+import { Link, useNavigate } from 'react-router-dom';
 import FilmList from '../../components/film-list/film-list';
+import { AppRoute } from '../../const';
 import { FilmData } from '../../types/film';
 
-type PromoFilm = {
-  title: string;
-  genre: string;
-  year: number;
-}
-
 type MainScreenProps = {
-  promo: PromoFilm;
+  promo: FilmData;
   films: FilmData[];
 }
 
 function Main({ promo, films }: MainScreenProps): JSX.Element {
-  const { title: promoTitle, genre: promoGenre, year: promoYear } = promo;
+  const navigate = useNavigate();
+
   return (
     <div>
       <section className="film-card">
         <div className="film-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+          <img src={promo.backgroung} alt={promo.title} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -34,12 +31,15 @@ function Main({ promo, films }: MainScreenProps): JSX.Element {
 
           <ul className="user-block">
             <li className="user-block__item">
-              <div className="user-block__avatar">
+              <div
+                className="user-block__avatar"
+                onClick={() => { navigate(AppRoute.MyList); }}
+              >
                 <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
               </div>
             </li>
             <li className="user-block__item">
-              <a href="#todo" className="user-block__link">Sign out</a>
+              <Link to={AppRoute.Login} className="user-block__link">Sign out</Link>
             </li>
           </ul>
         </header>
@@ -47,24 +47,32 @@ function Main({ promo, films }: MainScreenProps): JSX.Element {
         <div className="film-card__wrap">
           <div className="film-card__info">
             <div className="film-card__poster">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+              <img src={promo.poster} alt={promo.title} width="218" height="327" />
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">{promoTitle}</h2>
+              <h2 className="film-card__title">{promo.title}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{promoGenre}</span>
-                <span className="film-card__year">{promoYear}</span>
+                <span className="film-card__genre">{promo.genre}</span>
+                <span className="film-card__year">{promo.released}</span>
               </p>
 
               <div className="film-card__buttons">
-                <button className="btn btn--play film-card__button" type="button">
+                <button
+                  onClick={() => { navigate(AppRoute.Play); }}
+                  className="btn btn--play film-card__button"
+                  type="button"
+                >
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list film-card__button" type="button">
+                <button
+                  onClick={() => { navigate(AppRoute.MyList); }}
+                  className="btn btn--list film-card__button"
+                  type="button"
+                >
                   <svg viewBox="0 0 19 20" width="19" height="20">
                     <use xlinkHref="#add"></use>
                   </svg>

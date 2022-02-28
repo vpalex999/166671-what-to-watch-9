@@ -11,15 +11,8 @@ import { AppRoute, AuthorizationStatus } from './const';
 import { FilmData } from './types/film';
 import { PlayerData } from './types/player';
 
-type PromoFilm = {
-  id: string;
-  title: string;
-  genre: string;
-  year: number;
-}
-
 type AppScreenProps = {
-  promo: PromoFilm,
+  promo: FilmData,
   films: FilmData[]
   playerData: PlayerData
 }
