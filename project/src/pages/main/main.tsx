@@ -1,16 +1,14 @@
-import { useNavigate } from 'react-router-dom';
+import CardButtons from '../../components/card-buttons/card-buttons';
 import FilmList from '../../components/film-list/film-list';
 import UserBlock from '../../components/user-block/user-block';
-import { AppRoute } from '../../const';
 import { FilmData } from '../../types/film';
 
 type MainScreenProps = {
   promo: FilmData;
   films: FilmData[];
-}
+};
 
 function Main({ promo, films }: MainScreenProps): JSX.Element {
-  const navigate = useNavigate();
 
   return (
     <div>
@@ -35,7 +33,12 @@ function Main({ promo, films }: MainScreenProps): JSX.Element {
         <div className="film-card__wrap">
           <div className="film-card__info">
             <div className="film-card__poster">
-              <img src={promo.poster} alt={promo.title} width="218" height="327" />
+              <img
+                src={promo.poster}
+                alt={promo.title}
+                width="218"
+                height="327"
+              />
             </div>
 
             <div className="film-card__desc">
@@ -44,29 +47,7 @@ function Main({ promo, films }: MainScreenProps): JSX.Element {
                 <span className="film-card__genre">{promo.genre}</span>
                 <span className="film-card__year">{promo.released}</span>
               </p>
-
-              <div className="film-card__buttons">
-                <button
-                  onClick={() => { navigate(AppRoute.Play); }}
-                  className="btn btn--play film-card__button"
-                  type="button"
-                >
-                  <svg viewBox="0 0 19 19" width="19" height="19">
-                    <use xlinkHref="#play-s"></use>
-                  </svg>
-                  <span>Play</span>
-                </button>
-                <button
-                  onClick={() => { navigate(AppRoute.MyList); }}
-                  className="btn btn--list film-card__button"
-                  type="button"
-                >
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
-                  <span>My list</span>
-                </button>
-              </div>
+              <CardButtons />
             </div>
           </div>
         </div>
@@ -78,41 +59,63 @@ function Main({ promo, films }: MainScreenProps): JSX.Element {
 
           <ul className="catalog__genres-list">
             <li className="catalog__genres-item catalog__genres-item--active">
-              <a href="#todo" className="catalog__genres-link">All genres</a>
+              <a href="#todo" className="catalog__genres-link">
+                All genres
+              </a>
             </li>
             <li className="catalog__genres-item">
-              <a href="#todo" className="catalog__genres-link">Comedies</a>
+              <a href="#todo" className="catalog__genres-link">
+                Comedies
+              </a>
             </li>
             <li className="catalog__genres-item">
-              <a href="#todo" className="catalog__genres-link">Crime</a>
+              <a href="#todo" className="catalog__genres-link">
+                Crime
+              </a>
             </li>
             <li className="catalog__genres-item">
-              <a href="#todo" className="catalog__genres-link">Documentary</a>
+              <a href="#todo" className="catalog__genres-link">
+                Documentary
+              </a>
             </li>
             <li className="catalog__genres-item">
-              <a href="#todo" className="catalog__genres-link">Dramas</a>
+              <a href="#todo" className="catalog__genres-link">
+                Dramas
+              </a>
             </li>
             <li className="catalog__genres-item">
-              <a href="#todo" className="catalog__genres-link">Horror</a>
+              <a href="#todo" className="catalog__genres-link">
+                Horror
+              </a>
             </li>
             <li className="catalog__genres-item">
-              <a href="#todo" className="catalog__genres-link">Kids & Family</a>
+              <a href="#todo" className="catalog__genres-link">
+                Kids & Family
+              </a>
             </li>
             <li className="catalog__genres-item">
-              <a href="#todo" className="catalog__genres-link">Romance</a>
+              <a href="#todo" className="catalog__genres-link">
+                Romance
+              </a>
             </li>
             <li className="catalog__genres-item">
-              <a href="#todo" className="catalog__genres-link">Sci-Fi</a>
+              <a href="#todo" className="catalog__genres-link">
+                Sci-Fi
+              </a>
             </li>
             <li className="catalog__genres-item">
-              <a href="#todo" className="catalog__genres-link">Thrillers</a>
+              <a href="#todo" className="catalog__genres-link">
+                Thrillers
+              </a>
             </li>
           </ul>
 
           <FilmList films={films} />
 
           <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
+            <button className="catalog__button" type="button">
+              Show more
+            </button>
           </div>
         </section>
 
