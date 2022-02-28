@@ -1,5 +1,6 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import FilmList from '../../components/film-list/film-list';
+import UserBlock from '../../components/user-block/user-block';
 import { AppRoute } from '../../const';
 import { FilmData } from '../../types/film';
 
@@ -28,20 +29,7 @@ function Main({ promo, films }: MainScreenProps): JSX.Element {
               <span className="logo__letter logo__letter--3">W</span>
             </a>
           </div>
-
-          <ul className="user-block">
-            <li className="user-block__item">
-              <div
-                className="user-block__avatar"
-                onClick={() => { navigate(AppRoute.MyList); }}
-              >
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-              </div>
-            </li>
-            <li className="user-block__item">
-              <Link to={AppRoute.Login} className="user-block__link">Sign out</Link>
-            </li>
-          </ul>
+          <UserBlock />
         </header>
 
         <div className="film-card__wrap">
