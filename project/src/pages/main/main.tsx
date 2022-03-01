@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom';
 import CardButtons from '../../components/card-buttons/card-buttons';
+import FilmCardHead from '../../components/film-card-head/film-card-head';
 import FilmList from '../../components/film-list/film-list';
-import UserBlock from '../../components/user-block/user-block';
+import { AppRoute } from '../../const';
 import { FilmData } from '../../types/film';
 
 type MainScreenProps = {
@@ -9,7 +11,6 @@ type MainScreenProps = {
 };
 
 function Main({ promo, films }: MainScreenProps): JSX.Element {
-
   return (
     <div>
       <section className="film-card">
@@ -19,16 +20,7 @@ function Main({ promo, films }: MainScreenProps): JSX.Element {
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <header className="page-header film-card__head">
-          <div className="logo">
-            <a href="#todo" className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-          <UserBlock />
-        </header>
+        <FilmCardHead />
 
         <div className="film-card__wrap">
           <div className="film-card__info">
@@ -121,11 +113,11 @@ function Main({ promo, films }: MainScreenProps): JSX.Element {
 
         <footer className="page-footer">
           <div className="logo">
-            <a href="#todo" className="logo__link logo__link--light">
+            <Link to={AppRoute.Root} className="logo__link logo__link--light">
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>
-            </a>
+            </Link>
           </div>
 
           <div className="copyright">
