@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import AddReview from './pages/add-review/add-review';
+import AddReviewPage from './pages/add-review/add-review';
 import Film from './pages/film/film';
 import Main from './pages/main/main';
 import MyList from './pages/my-list/my-list';
@@ -54,7 +54,7 @@ function App({ promo, films, playerData }: AppScreenProps): JSX.Element {
         <Route
           path={AppRoute.AddReview}
           element={
-            <AddReview
+            <AddReviewPage
               film={films[0]}
             />
           }
