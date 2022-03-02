@@ -3,7 +3,7 @@ import CardButtons from '../../components/card-buttons/card-buttons';
 import FilmCardHead from '../../components/film-card-head/film-card-head';
 import { AppRoute } from '../../const';
 
-function Film(): JSX.Element {
+function FilmPage(): JSX.Element {
   return (
     <div>
       <section className="film-card film-card--full">
@@ -197,4 +197,4 @@ function Film(): JSX.Element {
   );
 }
 
-export default Film;
+export default FilmPage;

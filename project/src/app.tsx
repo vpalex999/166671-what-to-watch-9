@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import AddReviewPage from './pages/add-review/add-review';
-import Film from './pages/film/film';
-import Main from './pages/main/main';
-import MyList from './pages/my-list/my-list';
-import Play from './pages/play/play';
-import SignIn from './pages/sign-in/sign-in';
+import FilmPage from './pages/film/film';
+import MainPage from './pages/main/main';
+import MyListPage from './pages/my-list/my-list';
+import PlayPage from './pages/play/play';
+import SignInPage from './pages/sign-in/sign-in';
 import PrivateRoute from './components/private-route/private-route';
-import NotFound from './pages/not-found/not-found';
+import NotFoundPage from './pages/not-found/not-found';
 import { AppRoute, AuthorizationStatus } from './const';
 import { FilmData } from './types/film';
 import { PlayerData } from './types/player';
@@ -25,7 +25,7 @@ function App({ promo, films, playerData }: AppScreenProps): JSX.Element {
         <Route
           path={AppRoute.Root}
           element={
-            <Main
+            <MainPage
               promo={promo}
               films={films}
             />
@@ -33,7 +33,7 @@ function App({ promo, films, playerData }: AppScreenProps): JSX.Element {
         />
         <Route
           path={AppRoute.Login}
-          element={<SignIn />}
+          element={<SignInPage />}
         />
         <Route
           path={AppRoute.MyList}
@@ -41,7 +41,7 @@ function App({ promo, films, playerData }: AppScreenProps): JSX.Element {
             <PrivateRoute
               authorizationStatus={AuthorizationStatus.Auth}
             >
-              <MyList
+              <MyListPage
                 films={films}
               />
             </PrivateRoute>
@@ -49,7 +49,7 @@ function App({ promo, films, playerData }: AppScreenProps): JSX.Element {
         />
         <Route
           path={AppRoute.Film}
-          element={<Film />}
+          element={<FilmPage />}
         />
         <Route
           path={AppRoute.AddReview}
@@ -62,14 +62,14 @@ function App({ promo, films, playerData }: AppScreenProps): JSX.Element {
         <Route
           path={AppRoute.Play}
           element={
-            <Play
+            <PlayPage
               data={playerData}
             />
           }
         />
         <Route
           path="*"
-          element={<NotFound />}
+          element={<NotFoundPage />}
         />
       </Routes>
     </BrowserRouter>

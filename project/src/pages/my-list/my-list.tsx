@@ -9,7 +9,7 @@ type MyListProps = {
   films: FilmData[];
 }
 
-function MyList({ films }: MyListProps): JSX.Element {
+function MyListPage({ films }: MyListProps): JSX.Element {
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
@@ -40,4 +40,4 @@ function MyList({ films }: MyListProps): JSX.Element {
   );
 }
 
-export default MyList;
+export default MyListPage;

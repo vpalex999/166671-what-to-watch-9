@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 
-function NotFound(): JSX.Element {
+function NotFoundPage(): JSX.Element {
   return (
     <div className="page-content">
       <h1>404. Page not found</h1>
@@ -24,4 +24,4 @@ function NotFound(): JSX.Element {
   );
 }
 
-export default NotFound;
+export default NotFoundPage;

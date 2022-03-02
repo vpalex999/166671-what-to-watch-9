@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import Logo from '../../components/logo/logo';
 import { AppRoute } from '../../const';
 
-function SignIn(): JSX.Element {
+function SignInPage(): JSX.Element {
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
@@ -70,4 +70,4 @@ function SignIn(): JSX.Element {
   );
 }
 
-export default SignIn;
+export default SignInPage;

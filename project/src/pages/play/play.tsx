@@ -4,7 +4,7 @@ type PlayProps = {
   data: PlayerData
 }
 
-function Play({data}: PlayProps): JSX.Element {
+function PlayPage({data}: PlayProps): JSX.Element {
   return (
     <div className="player">
       <video src="#" className="player__video" poster={data.poster}></video>
@@ -42,4 +42,4 @@ function Play({data}: PlayProps): JSX.Element {
   );
 }
 
-export default Play;
+export default PlayPage;

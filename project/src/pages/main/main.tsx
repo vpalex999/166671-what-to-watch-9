@@ -10,7 +10,7 @@ type MainScreenProps = {
   films: FilmData[];
 };
 
-function Main({ promo, films }: MainScreenProps): JSX.Element {
+function MainPage({ promo, films }: MainScreenProps): JSX.Element {
   return (
     <div>
       <section className="film-card">
@@ -129,4 +129,4 @@ function Main({ promo, films }: MainScreenProps): JSX.Element {
   );
 }
 
-export default Main;
+export default MainPage;
