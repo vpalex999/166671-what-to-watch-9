@@ -27,6 +27,7 @@ const mokFilmList: FilmData[] = [
       count: '240 ratings',
     },
     link: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    trailer: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: '12345',
@@ -58,6 +59,7 @@ const mokFilmList: FilmData[] = [
       count: '240 ratings',
     },
     link: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    trailer: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: '12346',
@@ -76,6 +78,7 @@ const mokFilmList: FilmData[] = [
       count: '160 ratings',
     },
     link: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    trailer: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: '12347',
@@ -94,6 +97,7 @@ const mokFilmList: FilmData[] = [
       count: '240 ratings',
     },
     link: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    trailer: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: '12348',
@@ -112,6 +116,7 @@ const mokFilmList: FilmData[] = [
       count: '220 ratings',
     },
     link: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    trailer: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: '12349',
@@ -130,6 +135,7 @@ const mokFilmList: FilmData[] = [
       count: '99 ratings',
     },
     link: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    trailer: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: '12310',
@@ -148,6 +154,7 @@ const mokFilmList: FilmData[] = [
       count: '210 ratings',
     },
     link: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    trailer: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: '12311',
@@ -166,6 +173,7 @@ const mokFilmList: FilmData[] = [
       count: '80 ratings',
     },
     link: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    trailer: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
   {
     id: '12312',
@@ -184,6 +192,7 @@ const mokFilmList: FilmData[] = [
       count: '100 ratings',
     },
     link: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
+    trailer: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   },
 ];
 

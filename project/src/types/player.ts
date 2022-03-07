@@ -3,4 +3,5 @@ export type PlayerData = {
   poster: string;
   playerTime: string;
   title: string;
+  trailer: string;
 }
