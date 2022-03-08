@@ -3,6 +3,7 @@ import { AppRoute } from '../../const';
 import { FilmData } from '../../types/film';
 import { useEffect, useState } from 'react';
 import Player from '../player/player';
+import { mokPlayerData } from '../../moks/player';
 
 type FilmCardProps = {
   data: FilmData;
@@ -26,15 +27,11 @@ function SmallFilmCard({ data }: FilmCardProps): JSX.Element {
 
     if (focus && !play) {
       timerId = setInterval(() => {
-        // eslint-disable-next-line no-console
-        console.log('play: ');
         setPlay(true);
-      }, 2000);
+      }, 1000);
     }
 
     if (!focus && play) {
-      // eslint-disable-next-line no-console
-      console.log('stop play');
       setPlay(false);
     }
 
@@ -46,7 +43,7 @@ function SmallFilmCard({ data }: FilmCardProps): JSX.Element {
 
   const getItem = () => {
     if (play) {
-      return (<Player src={data.trailer} />);
+      return (<Player data={mokPlayerData} />);
     }
     return (
       <>

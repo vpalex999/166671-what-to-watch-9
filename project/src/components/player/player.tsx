@@ -1,20 +1,20 @@
 // import { useState } from 'react';
 
+import { PlayerData } from '../../types/player';
+
 type PlayerProps = {
-  src: string;
-  poster?: string;
+  data: PlayerData;
 }
 
 
-function Player(props: PlayerProps): JSX.Element {
-
-  // const [soundOn, setSoundOn] = useState(false);
+function Player({ data }: PlayerProps): JSX.Element {
 
   return (
     <video
       className="player__video"
-      src={props.src}
-      poster={props.poster}
+      muted
+      src={data.trailer}
+      poster={data.poster}
       width="280"
       height="175"
       autoPlay
