@@ -1,10 +1,10 @@
 import { PlayerData } from '../../types/player';
 
 type PlayProps = {
-  data: PlayerData
+  data: PlayerData;
 }
 
-function PlayPage({data}: PlayProps): JSX.Element {
+function PlayPage({ data }: PlayProps): JSX.Element {
   return (
     <div className="player">
       <video src="#" className="player__video" poster={data.poster}></video>
@@ -15,7 +15,7 @@ function PlayPage({data}: PlayProps): JSX.Element {
         <div className="player__controls-row">
           <div className="player__time">
             <progress className="player__progress" value="30" max="100"></progress>
-            <div className="player__toggler" style={{left: '30%'}}>Toggler</div>
+            <div className="player__toggler" style={{ left: '30%' }}>Toggler</div>
           </div>
           <div className="player__time-value">{data.playerTime}</div>
         </div>
@@ -38,7 +38,6 @@ function PlayPage({data}: PlayProps): JSX.Element {
         </div>
       </div>
     </div>
-
   );
 }
 

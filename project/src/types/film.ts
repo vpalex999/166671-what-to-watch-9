@@ -17,4 +17,5 @@ export type FilmData = {
   description: string;
   rating: Rating;
   link: string;
+  trailer: string;
 }
