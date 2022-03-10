@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import CardButtons from '../../components/card-buttons/card-buttons';
 import FilmCardHead from '../../components/film-card-head/film-card-head';
 import FilmList from '../../components/film-list/film-list';
+import Footer from '../../components/page-footer/page-footer';
 import { AppRoute } from '../../const';
 import { FilmData } from '../../types/film';
 
@@ -111,7 +112,7 @@ function MainPage({ promo, films }: MainScreenProps): JSX.Element {
           </div>
         </section>
 
-        <footer className="page-footer">
+        <Footer>
           <div className="logo">
             <Link to={AppRoute.Root} className="logo__link logo__link--light">
               <span className="logo__letter logo__letter--1">W</span>
@@ -119,11 +120,7 @@ function MainPage({ promo, films }: MainScreenProps): JSX.Element {
               <span className="logo__letter logo__letter--3">W</span>
             </Link>
           </div>
-
-          <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
-          </div>
-        </footer>
+        </Footer>
       </div>
     </div>
   );

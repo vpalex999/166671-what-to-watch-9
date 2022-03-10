@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Footer from '../../components/page-footer/page-footer';
 import { AppRoute } from '../../const';
 
 function NotFoundPage(): JSX.Element {
@@ -7,7 +8,7 @@ function NotFoundPage(): JSX.Element {
       <h1>404. Page not found</h1>
       <a href="/">Вернуться на главную</a>
 
-      <footer className="page-footer">
+      <Footer>
         <div className="logo">
           <Link to={AppRoute.Root} className="logo__link logo__link--light">
             <span className="logo__letter logo__letter--1">W</span>
@@ -15,11 +16,7 @@ function NotFoundPage(): JSX.Element {
             <span className="logo__letter logo__letter--3">W</span>
           </Link>
         </div>
-
-        <div className="copyright">
-          <p>© 2019 What to watch Ltd.</p>
-        </div>
-      </footer>
+      </Footer>
     </div>
   );
 }

@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
 import FilmList from '../../components/film-list/film-list';
 import Logo from '../../components/logo/logo';
+import Footer from '../../components/page-footer/page-footer';
 import UserBlock from '../../components/user-block/user-block';
 import { AppRoute } from '../../const';
 import { FilmData } from '../../types/film';
 
 type MyListProps = {
   films: FilmData[];
-}
+};
 
 function MyListPage({ films }: MyListProps): JSX.Element {
   return (
@@ -23,7 +24,7 @@ function MyListPage({ films }: MyListProps): JSX.Element {
         <FilmList films={films} />
       </section>
 
-      <footer className="page-footer">
+      <Footer>
         <div className="logo">
           <Link to={AppRoute.Root} className="logo__link logo__link--light">
             <span className="logo__letter logo__letter--1">W</span>
@@ -31,11 +32,7 @@ function MyListPage({ films }: MyListProps): JSX.Element {
             <span className="logo__letter logo__letter--3">W</span>
           </Link>
         </div>
-
-        <div className="copyright">
-          <p>© 2019 What to watch Ltd.</p>
-        </div>
-      </footer>
+      </Footer>
     </div>
   );
 }
