@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom';
-import { AppRoute } from '../../const';
+import LogoLight from '../logo-light/logo-light';
 import Logo from '../logo/logo';
 import Footer from '../page-footer/page-footer';
 
@@ -60,13 +59,7 @@ function SingInMessage(): JSX.Element {
       </div>
 
       <Footer>
-        <div className="logo">
-          <Link to={AppRoute.Root} className="logo__link logo__link--light">
-            <span className="logo__letter logo__letter--1">W</span>
-            <span className="logo__letter logo__letter--2">T</span>
-            <span className="logo__letter logo__letter--3">W</span>
-          </Link>
-        </div>
+        <LogoLight />
       </Footer>
     </div>
   );
