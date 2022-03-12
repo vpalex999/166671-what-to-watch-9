@@ -1,10 +1,6 @@
-import FilmCardNavigation from '../film-card-navigation/film-card-navigation';
-
 function FilmOverview(): JSX.Element {
   return (
-    <div className="film-card__desc">
-      <FilmCardNavigation />
-
+    <>
       <div className="film-rating">
         <div className="film-rating__score">8,9</div>
         <p className="film-rating__meta">
@@ -39,7 +35,7 @@ function FilmOverview(): JSX.Element {
           </strong>
         </p>
       </div>
-    </div>
+    </>
   );
 }
 

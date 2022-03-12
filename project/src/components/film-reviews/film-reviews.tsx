@@ -1,9 +1,9 @@
-import FilmCardNavigation from '../film-card-navigation/film-card-navigation';
+import CardTabNavigation from '../card-tab-navigation/card--tab-navigation';
 
 function FilmReviews(): JSX.Element {
   return (
     <div className="film-card__desc">
-      <FilmCardNavigation />
+      <CardTabNavigation />
 
       <div className="film-card__reviews film-card__row">
         <div className="film-card__reviews-col">

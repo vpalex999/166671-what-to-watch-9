@@ -2,11 +2,9 @@ import { Link } from 'react-router-dom';
 import CardButtons from '../../components/card-buttons/card-buttons';
 import FilmCardHead from '../../components/film-card-head/film-card-head';
 import FilmList from '../../components/film-list/film-list';
-// import FilmReviews from '../../components/film-reviews/film-reviews';
-// import FilmDetails from '../../components/film-details/film-details';
-import FilmOverview from '../../components/film-overview/film-overview';
 import LogoLight from '../../components/logo-light/logo-light';
 import Footer from '../../components/page-footer/page-footer';
+import TabContainer from '../../components/tab-container/tab-container';
 import { AppRoute } from '../../const';
 import { mokFilmList } from '../../moks/films';
 
@@ -53,7 +51,7 @@ function FilmPage(): JSX.Element {
               />
             </div>
 
-            <FilmOverview />
+            <TabContainer />
           </div>
         </div>
       </section>
