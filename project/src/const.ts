@@ -13,3 +13,9 @@ export enum AppRoute {
   AddReview = '/films/:id/review',
   Play = '/player/:id',
 }
+
+export enum CardTabName {
+  Overview = 'Overview',
+  Details = 'Details',
+  Reviews = 'Reviews'
+}
