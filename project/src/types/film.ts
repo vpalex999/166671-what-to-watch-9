@@ -1,5 +1,5 @@
 type Rating = {
-  score: number;
+  score: string;
   level: string;
   count: string;
 }
