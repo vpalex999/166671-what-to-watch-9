@@ -8,6 +8,7 @@ import CardTabContainer from '../../components/card-tab-container/card-tab-conta
 import { AppRoute } from '../../const';
 import { mokFilmList } from '../../moks/films';
 import { mokReviews } from '../../moks/review';
+import FilmCardPosterBig from '../../components/film-card-poster-big/film-card-poster-big';
 
 function FilmPage(): JSX.Element {
 
@@ -49,15 +50,7 @@ function FilmPage(): JSX.Element {
 
         <div className="film-card__wrap film-card__translate-top">
           <div className="film-card__info">
-            <div className="film-card__poster film-card__poster--big">
-              <img
-                src="img/the-grand-budapest-hotel-poster.jpg"
-                alt="The Grand Budapest Hotel poster"
-                width="218"
-                height="327"
-              />
-            </div>
-
+            <FilmCardPosterBig poster={data.poster} alt={data.title}/>
             <CardTabContainer data={data} reviews={mokReviews} />
           </div>
         </div>

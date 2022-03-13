@@ -1,4 +1,5 @@
 import AddReview from '../../components/add-review/add-review';
+import FilmCardPosterSmall from '../../components/film-card-poster-small/film-card-poster-small';
 import Logo from '../../components/logo/logo';
 import UserBlock from '../../components/user-block/user-block';
 import { FilmData } from '../../types/film';
@@ -32,9 +33,7 @@ function AddReviewPage({ film }: AddReviewPageProps): JSX.Element {
           <UserBlock />
         </header>
 
-        <div className="film-card__poster film-card__poster--small">
-          <img src={film.poster} alt={film.title} width="218" height="327" />
-        </div>
+        <FilmCardPosterSmall poster={film.poster} alt={film.title} />
       </div>
 
       <AddReview />

@@ -1,5 +1,6 @@
 import CardButtons from '../../components/card-buttons/card-buttons';
 import FilmCardHead from '../../components/film-card-head/film-card-head';
+import FilmCardPoster from '../../components/film-card-poster/film-card-poster';
 import FilmList from '../../components/film-list/film-list';
 import LogoLight from '../../components/logo-light/logo-light';
 import Footer from '../../components/page-footer/page-footer';
@@ -24,14 +25,7 @@ function MainPage({ promo, films }: MainScreenProps): JSX.Element {
 
         <div className="film-card__wrap">
           <div className="film-card__info">
-            <div className="film-card__poster">
-              <img
-                src={promo.poster}
-                alt={promo.title}
-                width="218"
-                height="327"
-              />
-            </div>
+            <FilmCardPoster poster={promo.poster} alt={promo.title} />
 
             <div className="film-card__desc">
               <h2 className="film-card__title">{promo.title}</h2>
