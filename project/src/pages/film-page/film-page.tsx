@@ -9,6 +9,7 @@ import { AppRoute } from '../../const';
 import { mokFilmList } from '../../moks/films';
 import { mokReviews } from '../../moks/review';
 import FilmCardPosterBig from '../../components/film-card-poster-big/film-card-poster-big';
+import FilmCardBg from '../../components/film-card-bg/film-card-bg';
 
 function FilmPage(): JSX.Element {
 
@@ -21,12 +22,7 @@ function FilmPage(): JSX.Element {
     <>
       <section className="film-card film-card--full">
         <div className="film-card__hero">
-          <div className="film-card__bg">
-            <img
-              src="img/bg-the-grand-budapest-hotel.jpg"
-              alt="The Grand Budapest Hotel"
-            />
-          </div>
+          <FilmCardBg backgroung={data.backgroung} alt={data.title}/>
 
           <h1 className="visually-hidden">WTW</h1>
 
