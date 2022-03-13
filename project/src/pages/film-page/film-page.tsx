@@ -4,9 +4,10 @@ import FilmCardHead from '../../components/film-card-head/film-card-head';
 import FilmList from '../../components/film-list/film-list';
 import LogoLight from '../../components/logo-light/logo-light';
 import Footer from '../../components/page-footer/page-footer';
-import TabContainer from '../../components/tab-container/tab-container';
+import CardTabContainer from '../../components/card-tab-container/card-tab-container';
 import { AppRoute } from '../../const';
 import { mokFilmList } from '../../moks/films';
+import { mokReviews } from '../../moks/review';
 
 function FilmPage(): JSX.Element {
   return (
@@ -51,7 +52,7 @@ function FilmPage(): JSX.Element {
               />
             </div>
 
-            <TabContainer />
+            <CardTabContainer data={mokFilmList[0]} reviews={mokReviews}/>
           </div>
         </div>
       </section>
