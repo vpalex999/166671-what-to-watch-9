@@ -10,6 +10,12 @@ import { mokFilmList } from '../../moks/films';
 import { mokReviews } from '../../moks/review';
 
 function FilmPage(): JSX.Element {
+
+  const data = mokFilmList[0];
+  const sameMovies = mokFilmList
+    .filter((film) => (film.genre === data.genre) && (film.id !== data.id))
+    .slice(0, 3);
+
   return (
     <>
       <section className="film-card film-card--full">
@@ -52,7 +58,7 @@ function FilmPage(): JSX.Element {
               />
             </div>
 
-            <CardTabContainer data={mokFilmList[0]} reviews={mokReviews}/>
+            <CardTabContainer data={data} reviews={mokReviews} />
           </div>
         </div>
       </section>
@@ -61,7 +67,7 @@ function FilmPage(): JSX.Element {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <FilmList films={mokFilmList.slice(1, 5)} />
+          <FilmList films={sameMovies} />
 
         </section>
 
