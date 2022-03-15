@@ -1,4 +1,6 @@
 import AddReview from '../../components/add-review/add-review';
+import FilmCardBg from '../../components/film-card-bg/film-card-bg';
+import FilmCardPosterSmall from '../../components/film-card-poster-small/film-card-poster-small';
 import Logo from '../../components/logo/logo';
 import UserBlock from '../../components/user-block/user-block';
 import { FilmData } from '../../types/film';
@@ -11,9 +13,7 @@ function AddReviewPage({ film }: AddReviewPageProps): JSX.Element {
   return (
     <section className="film-card film-card--full">
       <div className="film-card__header">
-        <div className="film-card__bg">
-          <img src={film.backgroung} alt={film.title} />
-        </div>
+        <FilmCardBg backgroung={film.backgroung} alt={film.title}/>
 
         <h1 className="visually-hidden">WTW</h1>
 
@@ -32,9 +32,7 @@ function AddReviewPage({ film }: AddReviewPageProps): JSX.Element {
           <UserBlock />
         </header>
 
-        <div className="film-card__poster film-card__poster--small">
-          <img src={film.poster} alt={film.title} width="218" height="327" />
-        </div>
+        <FilmCardPosterSmall poster={film.poster} alt={film.title} />
       </div>
 
       <AddReview />

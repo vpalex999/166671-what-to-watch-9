@@ -1,8 +1,9 @@
-import { Link } from 'react-router-dom';
 import CardButtons from '../../components/card-buttons/card-buttons';
 import FilmCardHead from '../../components/film-card-head/film-card-head';
+import FilmCardPoster from '../../components/film-card-poster/film-card-poster';
 import FilmList from '../../components/film-list/film-list';
-import { AppRoute } from '../../const';
+import LogoLight from '../../components/logo-light/logo-light';
+import Footer from '../../components/page-footer/page-footer';
 import { FilmData } from '../../types/film';
 
 type MainScreenProps = {
@@ -24,14 +25,7 @@ function MainPage({ promo, films }: MainScreenProps): JSX.Element {
 
         <div className="film-card__wrap">
           <div className="film-card__info">
-            <div className="film-card__poster">
-              <img
-                src={promo.poster}
-                alt={promo.title}
-                width="218"
-                height="327"
-              />
-            </div>
+            <FilmCardPoster poster={promo.poster} alt={promo.title} />
 
             <div className="film-card__desc">
               <h2 className="film-card__title">{promo.title}</h2>
@@ -111,19 +105,9 @@ function MainPage({ promo, films }: MainScreenProps): JSX.Element {
           </div>
         </section>
 
-        <footer className="page-footer">
-          <div className="logo">
-            <Link to={AppRoute.Root} className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </Link>
-          </div>
-
-          <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
-          </div>
-        </footer>
+        <Footer>
+          <LogoLight />
+        </Footer>
       </div>
     </div>
   );
