@@ -13,10 +13,10 @@ export enum AppRoute {
   Play = '/player/:id',
 }
 
-export const CARD_TAB_NAME = {
-  overview: 'Overview',
-  details: 'Details',
-  reviews: 'Reviews',
+export const CardTabName = {
+  Overview: 'Overview',
+  Details: 'Details',
+  Reviews: 'Reviews',
 };
 
-export const TAB_NAME_LIST = [CARD_TAB_NAME.overview, CARD_TAB_NAME.details, CARD_TAB_NAME.reviews];
+export const TAB_NAME_LIST = [CardTabName.Overview, CardTabName.Details, CardTabName.Reviews];

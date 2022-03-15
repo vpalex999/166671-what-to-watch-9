@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import FilmNavigationItem from '../film-navigation-item/film-navigation-item';
 import FilmNavigationItemActive from '../film-navigation-item-active/film-navigation-item-active';
-import {CARD_TAB_NAME, TAB_NAME_LIST} from '../../const';
+import {CardTabName, TAB_NAME_LIST} from '../../const';
 
 type CardTabNavigationProps = {
   onClickTab: (name: string) => void;
 }
 
 function CardTabNavigation({ onClickTab }: CardTabNavigationProps): JSX.Element {
-  const [activeItem, setActiveItem] = useState(CARD_TAB_NAME.overview);
+  const [activeItem, setActiveItem] = useState(CardTabName.Overview);
 
   useEffect(() => {
     onClickTab(activeItem);
