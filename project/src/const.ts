@@ -1,4 +1,3 @@
-
 export enum AuthorizationStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
@@ -19,4 +18,15 @@ export const CardTabName = {
   Reviews: 'Reviews',
 };
 
-export const TAB_NAME_LIST = [CardTabName.Overview, CardTabName.Details, CardTabName.Reviews];
+export const TAB_NAME_LIST = [
+  CardTabName.Overview,
+  CardTabName.Details,
+  CardTabName.Reviews,
+];
+
+export const ALL_GENRES = 'All genres';
+
+export enum Action {
+  CHANGE_GENRE = 'main/changeGenre',
+  FILL_FILMS = 'FILL_FILMS',
+}
