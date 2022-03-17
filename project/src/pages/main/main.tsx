@@ -6,13 +6,17 @@ import CatalogGenresList from '../../components/catalog-genres-list/catalog-genr
 import LogoLight from '../../components/logo-light/logo-light';
 import Footer from '../../components/page-footer/page-footer';
 import { FilmData } from '../../types/film';
+import { useAppSelector } from '../../hooks';
+import { getSameFilms } from '../../util';
 
 type MainScreenProps = {
   promo: FilmData;
-  films: FilmData[];
 };
 
-function MainPage({ promo, films }: MainScreenProps): JSX.Element {
+function MainPage({ promo }: MainScreenProps): JSX.Element {
+  const filterGenre = useAppSelector((state) => state.filterGenre);
+  const films = useAppSelector((state) => state.films);
+
   return (
     <div>
       <section className="film-card">
@@ -46,7 +50,7 @@ function MainPage({ promo, films }: MainScreenProps): JSX.Element {
 
           <CatalogGenresList />
 
-          <FilmList films={films} />
+          <FilmList films={getSameFilms(filterGenre, films)} />
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">

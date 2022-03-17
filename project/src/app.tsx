@@ -27,7 +27,6 @@ function App({ promo, films, playerData }: AppScreenProps): JSX.Element {
           element={
             <MainPage
               promo={promo}
-              films={films}
             />
           }
         />
