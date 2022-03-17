@@ -2,11 +2,12 @@ import CatalogGenresItem from '../catalog-genres-item/catalog-genres-item';
 
 type CatalogGenresItemActiveProps = {
   genre: string;
+  onClick: (genre: string) => void
 }
 
-function CatalogGenresItemActive({ genre }: CatalogGenresItemActiveProps): JSX.Element {
+function CatalogGenresItemActive(props: CatalogGenresItemActiveProps): JSX.Element {
   return (
-    <CatalogGenresItem genre={genre} className="catalog__genres-item--active" />
+    <CatalogGenresItem className="catalog__genres-item--active" {...props}/>
   );
 }
 
