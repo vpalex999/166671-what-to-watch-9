@@ -1,4 +1,3 @@
-
 export enum AuthorizationStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
@@ -13,10 +12,21 @@ export enum AppRoute {
   Play = '/player/:id',
 }
 
-export const CARD_TAB_NAME = {
-  overview: 'Overview',
-  details: 'Details',
-  reviews: 'Reviews',
+export const CardTabName = {
+  Overview: 'Overview',
+  Details: 'Details',
+  Reviews: 'Reviews',
 };
 
-export const TAB_NAME_LIST = [CARD_TAB_NAME.overview, CARD_TAB_NAME.details, CARD_TAB_NAME.reviews];
+export const TAB_NAME_LIST = [
+  CardTabName.Overview,
+  CardTabName.Details,
+  CardTabName.Reviews,
+];
+
+export const ALL_GENRES = 'All genres';
+
+export enum Action {
+  CHANGE_GENRE = 'main/changeGenre',
+  FILL_FILMS = 'FILL_FILMS',
+}
