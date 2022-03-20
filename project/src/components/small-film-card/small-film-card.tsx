@@ -10,7 +10,7 @@ type FilmCardProps = {
 }
 
 function SmallFilmCard({ data }: FilmCardProps): JSX.Element {
-  const { title, backgroung: img } = data;
+  const { title, background: img } = data;
   const [focus, setFocus] = useState(false);
   const [play, setPlay] = useState(false);
 

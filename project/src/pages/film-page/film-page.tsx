@@ -22,7 +22,7 @@ function FilmPage(): JSX.Element {
     <>
       <section className="film-card film-card--full">
         <div className="film-card__hero">
-          <FilmCardBg backgroung={data.backgroung} alt={data.title}/>
+          <FilmCardBg background={data.background} alt={data.title}/>
 
           <h1 className="visually-hidden">WTW</h1>
 

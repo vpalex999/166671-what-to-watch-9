@@ -21,7 +21,7 @@ function MainPage({ promo }: MainScreenProps): JSX.Element {
     <div>
       <section className="film-card">
         <div className="film-card__bg">
-          <img src={promo.backgroung} alt={promo.title} />
+          <img src={promo.background} alt={promo.title} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>

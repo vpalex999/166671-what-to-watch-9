@@ -13,7 +13,7 @@ const mokFilmList: FilmData[] = [
   {
     id: '12344',
     title: 'The Grand Budapest Hotel',
-    backgroung: 'img/bg-the-grand-budapest-hotel.jpg',
+    background: 'img/bg-the-grand-budapest-hotel.jpg',
     poster: 'img/the-grand-budapest-hotel-poster.jpg',
     genre: Genre.Comedy,
     released: 2014,
@@ -48,7 +48,7 @@ const mokFilmList: FilmData[] = [
   {
     id: '12345',
     title: 'Fantastic Beasts: The Crimes of Grindelwald',
-    backgroung: 'img/fantastic-beasts-the-crimes-of-grindelwald.jpg',
+    background: 'img/fantastic-beasts-the-crimes-of-grindelwald.jpg',
     poster: 'img/the-grand-budapest-hotel-poster.jpg',
     genre: Genre.Mystery,
     released: 2007,
@@ -80,7 +80,7 @@ const mokFilmList: FilmData[] = [
   {
     id: '12346',
     title: 'Bohemian Rhapsody',
-    backgroung: 'img/bohemian-rhapsody.jpg',
+    background: 'img/bohemian-rhapsody.jpg',
     poster: 'img/the-grand-budapest-hotel-poster.jpg',
     genre: Genre.Musical,
     released: 2008,
@@ -99,7 +99,7 @@ const mokFilmList: FilmData[] = [
   {
     id: '12347',
     title: 'Macbeth',
-    backgroung: 'img/macbeth.jpg',
+    background: 'img/macbeth.jpg',
     poster: 'img/the-grand-budapest-hotel-poster.jpg',
     genre: Genre.Drama,
     released: 2009,
@@ -118,7 +118,7 @@ const mokFilmList: FilmData[] = [
   {
     id: '12348',
     title: 'Aviator',
-    backgroung: 'img/aviator.jpg',
+    background: 'img/aviator.jpg',
     poster: 'img/the-grand-budapest-hotel-poster.jpg',
     genre: Genre.Western,
     released: 2010,
@@ -137,7 +137,7 @@ const mokFilmList: FilmData[] = [
   {
     id: '12349',
     title: 'We need to talk about Kevin',
-    backgroung: 'img/we-need-to-talk-about-kevin.jpg',
+    background: 'img/we-need-to-talk-about-kevin.jpg',
     poster: 'img/the-grand-budapest-hotel-poster.jpg',
     genre: Genre.Drama,
     released: 2021,
@@ -156,7 +156,7 @@ const mokFilmList: FilmData[] = [
   {
     id: '12310',
     title: 'What We Do in the Shadows',
-    backgroung: 'img/what-we-do-in-the-shadows.jpg',
+    background: 'img/what-we-do-in-the-shadows.jpg',
     poster: 'img/the-grand-budapest-hotel-poster.jpg',
     genre: Genre.Mystery,
     released: 2019,
@@ -175,7 +175,7 @@ const mokFilmList: FilmData[] = [
   {
     id: '12311',
     title: 'Revenant',
-    backgroung: 'img/revenant.jpg',
+    background: 'img/revenant.jpg',
     poster: 'img/the-grand-budapest-hotel-poster.jpg',
     genre: Genre.Comedy,
     released: 2020,
@@ -194,7 +194,7 @@ const mokFilmList: FilmData[] = [
   {
     id: '12312',
     title: 'Johnny English',
-    backgroung: 'img/johnny-english.jpg',
+    background: 'img/johnny-english.jpg',
     poster: 'img/the-grand-budapest-hotel-poster.jpg',
     genre: Genre.Comedy,
     released: 2021,

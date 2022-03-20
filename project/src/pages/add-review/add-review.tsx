@@ -13,7 +13,7 @@ function AddReviewPage({ film }: AddReviewPageProps): JSX.Element {
   return (
     <section className="film-card film-card--full">
       <div className="film-card__header">
-        <FilmCardBg backgroung={film.backgroung} alt={film.title}/>
+        <FilmCardBg background={film.background} alt={film.title}/>
 
         <h1 className="visually-hidden">WTW</h1>
 
