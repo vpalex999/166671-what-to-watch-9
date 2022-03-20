@@ -7,11 +7,13 @@ import { mokFilmList } from '../moks/films';
 type InitialState = {
   filterGenre: string;
   films: FilmData[];
+  filmCountPerStep: number;
 };
 
 const initialState: InitialState = {
   filterGenre: ALL_GENRES,
   films: mokFilmList,
+  filmCountPerStep: 8,
 };
 
 const reducer = createReducer(initialState, (builder) => {

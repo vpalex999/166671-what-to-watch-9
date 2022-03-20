@@ -8,14 +8,28 @@ import Footer from '../../components/page-footer/page-footer';
 import { FilmData } from '../../types/film';
 import { useAppSelector } from '../../hooks';
 import { getSameFilms } from '../../util';
+import ButtonMore from '../../components/button-more/button-more';
+import { useEffect, useState } from 'react';
 
 type MainScreenProps = {
   promo: FilmData;
 };
 
 function MainPage({ promo }: MainScreenProps): JSX.Element {
-  const filterGenre = useAppSelector((state) => state.filterGenre);
-  const films = useAppSelector((state) => state.films);
+  const { filterGenre, films, filmCountPerStep } = useAppSelector((state) => state);
+
+  const [filmCount, setFilmCount] = useState(filmCountPerStep);
+
+
+  useEffect(() => {
+    setFilmCount(filmCountPerStep);
+  }, [filterGenre, filmCountPerStep]);
+
+  const onShowMore = () => {
+    setFilmCount((prevCount) => prevCount + filmCountPerStep);
+  };
+
+  const displayFilm = getSameFilms(filterGenre, films);
 
   return (
     <div>
@@ -50,13 +64,9 @@ function MainPage({ promo }: MainScreenProps): JSX.Element {
 
           <CatalogGenresList />
 
-          <FilmList films={getSameFilms(filterGenre, films)} />
+          <FilmList films={displayFilm.slice(0, filmCount)} />
 
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">
-              Show more
-            </button>
-          </div>
+          {(displayFilm.length > filmCount) && (<ButtonMore onShowMore={onShowMore} />)}
         </section>
 
         <Footer>
