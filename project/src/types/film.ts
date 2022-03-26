@@ -4,6 +4,10 @@ type Rating = {
   count: string;
 }
 
+export type Genre = {
+  genre: string;
+}
+
 export type FilmData = {
   id: string;
   title: string;
@@ -19,3 +23,6 @@ export type FilmData = {
   link: string;
   trailer: string;
 }
+
+export type FilmDataList = FilmData[];
+

@@ -28,5 +28,5 @@ export const ALL_GENRES = 'All genres';
 
 export enum Action {
   CHANGE_GENRE = 'main/changeGenre',
-  FILL_FILMS = 'FILL_FILMS',
+  LOAD_FILMS = 'data/loadFilms',
 }
