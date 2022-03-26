@@ -30,3 +30,7 @@ export enum Action {
   CHANGE_GENRE = 'main/changeGenre',
   LOAD_FILMS = 'data/loadFilms',
 }
+
+export enum APIRoute {
+  Films = '/films',
+}

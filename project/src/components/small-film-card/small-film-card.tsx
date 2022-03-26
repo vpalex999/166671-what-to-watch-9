@@ -3,16 +3,23 @@ import { AppRoute } from '../../const';
 import { FilmData } from '../../types/film';
 import { useEffect, useState } from 'react';
 import Player from '../player/player';
-import { mokPlayerData } from '../../moks/player';
+import { PlayerData } from '../../types/player';
 
 type FilmCardProps = {
   data: FilmData;
 }
 
 function SmallFilmCard({ data }: FilmCardProps): JSX.Element {
-  const { title, background: img } = data;
+  const { id, title, background: img, poster, trailer } = data;
   const [focus, setFocus] = useState(false);
   const [play, setPlay] = useState(false);
+  const playerData: PlayerData = {
+    id,
+    poster,
+    playerTime: '1:30:29',
+    title,
+    trailer,
+  };
 
   const onHover = () => {
     setFocus(true);
@@ -43,7 +50,7 @@ function SmallFilmCard({ data }: FilmCardProps): JSX.Element {
 
   const getItem = () => {
     if (play) {
-      return (<Player data={mokPlayerData} />);
+      return (<Player data={playerData} />);
     }
     return (
       <>

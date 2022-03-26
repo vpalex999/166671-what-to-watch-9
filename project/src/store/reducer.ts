@@ -2,8 +2,6 @@ import { createReducer } from '@reduxjs/toolkit';
 import { FilmData } from '../types/film';
 import { changeGenreAction, loadFilmsAction } from '../store/action';
 import { ALL_GENRES } from '../const';
-import { mokFilmList } from '../moks/films';
-
 type InitialState = {
   filterGenre: string;
   films: FilmData[];
@@ -13,7 +11,7 @@ type InitialState = {
 
 const initialState: InitialState = {
   filterGenre: ALL_GENRES,
-  films: mokFilmList,
+  films: [],
   filmCountPerStep: 8,
   isDataLoaded: false,
 };

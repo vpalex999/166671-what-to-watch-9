@@ -8,17 +8,12 @@ import SignInPage from './pages/sign-in/sign-in';
 import PrivateRoute from './components/private-route/private-route';
 import NotFoundPage from './pages/not-found/not-found';
 import { AppRoute, AuthorizationStatus } from './const';
-import { FilmData } from './types/film';
-import { PlayerData } from './types/player';
-
-type AppScreenProps = {
-  promo: FilmData,
-  films: FilmData[]
-  playerData: PlayerData
-}
+import { useAppSelector } from './hooks';
+import { mokPlayerData } from './moks/player';
 
 
-function App({ promo, films, playerData }: AppScreenProps): JSX.Element {
+function App(): JSX.Element {
+  const { films } = useAppSelector((state) => state);
   return (
     <BrowserRouter>
       <Routes>
@@ -26,7 +21,7 @@ function App({ promo, films, playerData }: AppScreenProps): JSX.Element {
           path={AppRoute.Root}
           element={
             <MainPage
-              promo={promo}
+              promo={films[0]}
             />
           }
         />
@@ -62,7 +57,7 @@ function App({ promo, films, playerData }: AppScreenProps): JSX.Element {
           path={AppRoute.Play}
           element={
             <PlayPage
-              data={playerData}
+              data={mokPlayerData}
             />
           }
         />
