@@ -10,10 +10,17 @@ import NotFoundPage from './pages/not-found/not-found';
 import { AppRoute, AuthorizationStatus } from './const';
 import { useAppSelector } from './hooks';
 import { mokPlayerData } from './moks/player';
+import LoadingScreen from './components/loading-screen/loading-screen';
 
 
 function App(): JSX.Element {
-  const { films } = useAppSelector((state) => state);
+  const { films, isDataLoaded } = useAppSelector((state) => state);
+  if (!isDataLoaded) {
+    return (
+      <LoadingScreen />
+    );
+  }
+
   return (
     <BrowserRouter>
       <Routes>
