@@ -1,3 +1,5 @@
+export const TIMEOUT_SHOW_ERROR = 2000;
+
 export enum AuthorizationStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
@@ -29,8 +31,15 @@ export const ALL_GENRES = 'All genres';
 export enum Action {
   CHANGE_GENRE = 'main/changeGenre',
   LOAD_FILMS = 'data/loadFilms',
+  CLIENT_ERROR = 'client/setError',
 }
 
 export enum APIRoute {
   Films = '/films',
+}
+
+export enum HTTP_CODE {
+  BAD_REQUEST = 400,
+  UNAUTHORIZED = 401,
+  NOT_FOUND = 404,
 }

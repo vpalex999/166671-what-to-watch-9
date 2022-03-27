@@ -9,3 +9,5 @@ export const changeGenreAction = createAction(
 );
 
 export const loadFilmsAction = createAction<FilmDataList>(Action.LOAD_FILMS);
+
+export const setErrorAction = createAction<string>(Action.CLIENT_ERROR);
