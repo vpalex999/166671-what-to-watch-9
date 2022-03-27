@@ -6,15 +6,16 @@ import LogoLight from '../../components/logo-light/logo-light';
 import Footer from '../../components/page-footer/page-footer';
 import CardTabContainer from '../../components/card-tab-container/card-tab-container';
 import { AppRoute } from '../../const';
-import { mokFilmList } from '../../moks/films';
 import { mokReviews } from '../../moks/review';
 import FilmCardPosterBig from '../../components/film-card-poster-big/film-card-poster-big';
 import FilmCardBg from '../../components/film-card-bg/film-card-bg';
+import { useAppSelector } from '../../hooks';
 
 function FilmPage(): JSX.Element {
 
-  const data = mokFilmList[0];
-  const sameMovies = mokFilmList
+  const { films } = useAppSelector((state) => state);
+  const data = films[0];
+  const sameMovies = films
     .filter((film) => (film.genre === data.genre) && (film.id !== data.id))
     .slice(0, 3);
 
@@ -22,7 +23,7 @@ function FilmPage(): JSX.Element {
     <>
       <section className="film-card film-card--full">
         <div className="film-card__hero">
-          <FilmCardBg background={data.background} alt={data.title}/>
+          <FilmCardBg background={data.background} alt={data.title} />
 
           <h1 className="visually-hidden">WTW</h1>
 
@@ -46,7 +47,7 @@ function FilmPage(): JSX.Element {
 
         <div className="film-card__wrap film-card__translate-top">
           <div className="film-card__info">
-            <FilmCardPosterBig poster={data.poster} alt={data.title}/>
+            <FilmCardPosterBig poster={data.poster} alt={data.title} />
             <CardTabContainer data={data} reviews={mokReviews} />
           </div>
         </div>
