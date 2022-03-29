@@ -28,6 +28,14 @@ export const TAB_NAME_LIST = [
 
 export const ALL_GENRES = 'All genres';
 
+export enum LevelRating {
+  Bad = 'Bad',
+  Normal = 'Normal',
+  Good = 'Good',
+  VeryGood = 'Very good',
+  Awesome = 'Awesome',
+}
+
 export enum Action {
   CHANGE_GENRE = 'main/changeGenre',
   LOAD_FILMS = 'data/loadFilms',

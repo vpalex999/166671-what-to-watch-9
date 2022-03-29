@@ -1,7 +1,7 @@
 type Rating = {
-  score: string;
+  score: number;
   level: string;
-  count: string;
+  count: number;
 }
 
 export type Genre = {
@@ -9,7 +9,7 @@ export type Genre = {
 }
 
 export type FilmData = {
-  id: string;
+  id: number;
   title: string;
   background: string;
   poster: string;
