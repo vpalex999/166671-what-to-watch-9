@@ -1,3 +1,5 @@
+export const TIMEOUT_SHOW_ERROR = 2000;
+
 export enum AuthorizationStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
@@ -26,7 +28,26 @@ export const TAB_NAME_LIST = [
 
 export const ALL_GENRES = 'All genres';
 
+export enum LevelRating {
+  Bad = 'Bad',
+  Normal = 'Normal',
+  Good = 'Good',
+  VeryGood = 'Very good',
+  Awesome = 'Awesome',
+}
+
 export enum Action {
   CHANGE_GENRE = 'main/changeGenre',
-  FILL_FILMS = 'FILL_FILMS',
+  LOAD_FILMS = 'data/loadFilms',
+  CLIENT_ERROR = 'client/setError',
+}
+
+export enum APIRoute {
+  Films = '/films',
+}
+
+export enum HTTP_CODE {
+  BAD_REQUEST = 400,
+  UNAUTHORIZED = 401,
+  NOT_FOUND = 404,
 }

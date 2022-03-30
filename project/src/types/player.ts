@@ -1,5 +1,5 @@
 export type PlayerData = {
-  id: string;
+  id: number;
   poster: string;
   playerTime: string;
   title: string;

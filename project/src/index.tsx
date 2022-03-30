@@ -2,19 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './app';
+import ErrorMessage from './components/error-message/error-message';
 import { store } from './store';
-import { mokFilmList } from './moks/films';
-import { mokPlayerData } from './moks/player';
+import { fetchFilmsAction } from './store/api-actions';
 
+store.dispatch(fetchFilmsAction());
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App
-        promo={mokFilmList[0]}
-        films={mokFilmList}
-        playerData={mokPlayerData}
-      />
+      <ErrorMessage />
+      <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
