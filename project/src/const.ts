@@ -3,6 +3,7 @@ export const TIMEOUT_SHOW_ERROR = 2000;
 export enum AuthorizationStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
+  Unknown = 'UNKNOWN',
 }
 
 export enum AppRoute {
@@ -40,10 +41,12 @@ export enum Action {
   CHANGE_GENRE = 'main/changeGenre',
   LOAD_FILMS = 'data/loadFilms',
   CLIENT_ERROR = 'client/setError',
+  AUTHORIZE = 'client/Authorize',
 }
 
 export enum APIRoute {
   Films = '/films',
+  Login = '/login',
 }
 
 export enum HTTP_CODE {
