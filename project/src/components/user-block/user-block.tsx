@@ -1,8 +1,20 @@
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { AppRoute } from '../../const';
+import { AppRoute, AuthorizationStatus } from '../../const';
+import { useAppSelector } from '../../hooks';
+import { setAuthorizationAction } from '../../store/action';
 
 function UserBlock(): JSX.Element {
   const navigate = useNavigate();
+  const { authorizationStatus } = useAppSelector((state) => state);
+  const dispatch = useDispatch();
+  const isAuthorized = authorizationStatus === AuthorizationStatus.Auth;
+
+  const onSig = () => {
+    if (isAuthorized) {
+      dispatch(setAuthorizationAction(AuthorizationStatus.NoAuth));
+    }
+  };
 
   return (
     <ul className="user-block">
@@ -17,8 +29,12 @@ function UserBlock(): JSX.Element {
         </div>
       </li>
       <li className="user-block__item">
-        <Link to={AppRoute.Login} className="user-block__link">
-          Sign out
+        <Link
+          to={isAuthorized ? AppRoute.Root : AppRoute.Login}
+          className="user-block__link"
+          onClick={onSig}
+        >
+          {isAuthorized ? 'Sign out' : 'Sign In'}
         </Link>
       </li>
     </ul>
