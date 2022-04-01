@@ -42,6 +42,7 @@ export enum Action {
   LOAD_FILMS = 'data/loadFilms',
   CLIENT_ERROR = 'client/setError',
   AUTHORIZE = 'client/Authorize',
+  REDIRECT_TO_ROUTE = 'redirectToRoute',
 }
 
 export enum APIRoute {

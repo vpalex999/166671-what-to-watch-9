@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import AddReviewPage from './pages/add-review/add-review';
 import FilmPage from './pages/film-page/film-page';
 import MainPage from './pages/main/main';
@@ -11,6 +11,8 @@ import { AppRoute } from './const';
 import { useAppSelector } from './hooks';
 import { mokPlayerData } from './moks/player';
 import LoadingScreen from './components/loading-screen/loading-screen';
+import browserHistory from './browser-history';
+import HistoryRouter from './components/history-route/history-route';
 
 
 function App(): JSX.Element {
@@ -22,7 +24,7 @@ function App(): JSX.Element {
   }
 
   return (
-    <BrowserRouter>
+    <HistoryRouter history={browserHistory}>
       <Routes>
         <Route
           path={AppRoute.Root}
@@ -71,7 +73,7 @@ function App(): JSX.Element {
           element={<NotFoundPage />}
         />
       </Routes>
-    </BrowserRouter>
+    </HistoryRouter>
   );
 }
 

@@ -1,9 +1,7 @@
 import { FormEvent, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 import LogoLight from '../../components/logo-light/logo-light';
 import Logo from '../../components/logo/logo';
 import Footer from '../../components/page-footer/page-footer';
-import { AppRoute } from '../../const';
 import { useAppDispatch } from '../../hooks';
 import { loginAction } from '../../store/api-actions';
 import { AuthData } from '../../types/auth-data';
@@ -13,11 +11,9 @@ function SignInPage(): JSX.Element {
   const passwordRef = useRef<HTMLInputElement | null>(null);
 
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
 
   const onSubmit = (authData: AuthData): void => {
     dispatch(loginAction(authData));
-    navigate(AppRoute.Root);
   };
 
   const onLogin = (evt: FormEvent<HTMLFormElement>) => {
