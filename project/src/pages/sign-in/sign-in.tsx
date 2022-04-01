@@ -1,8 +1,36 @@
+import { FormEvent, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import LogoLight from '../../components/logo-light/logo-light';
 import Logo from '../../components/logo/logo';
 import Footer from '../../components/page-footer/page-footer';
+import { AppRoute } from '../../const';
+import { useAppDispatch } from '../../hooks';
+import { loginAction } from '../../store/api-actions';
+import { AuthData } from '../../types/auth-data';
 
 function SignInPage(): JSX.Element {
+  const loginRef = useRef<HTMLInputElement | null>(null);
+  const passwordRef = useRef<HTMLInputElement | null>(null);
+
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const onSubmit = (authData: AuthData): void => {
+    dispatch(loginAction(authData));
+    navigate(AppRoute.Root);
+  };
+
+  const onLogin = (evt: FormEvent<HTMLFormElement>) => {
+    evt.preventDefault();
+
+    if (loginRef.current !== null && passwordRef.current !== null) {
+      onSubmit({
+        email: loginRef.current.value,
+        password: passwordRef.current.value,
+      });
+    }
+  };
+
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
@@ -12,10 +40,11 @@ function SignInPage(): JSX.Element {
       </header>
 
       <div className="sign-in user-page__content">
-        <form action="#" className="sign-in__form">
+        <form action="#" className="sign-in__form" onSubmit={onLogin}>
           <div className="sign-in__fields">
             <div className="sign-in__field">
               <input
+                ref={loginRef}
                 className="sign-in__input"
                 type="email"
                 placeholder="Email address"
@@ -31,6 +60,7 @@ function SignInPage(): JSX.Element {
             </div>
             <div className="sign-in__field">
               <input
+                ref={passwordRef}
                 className="sign-in__input"
                 type="password"
                 placeholder="Password"
