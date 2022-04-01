@@ -29,7 +29,7 @@ export const clearErrorAction = createAsyncThunk(
   },
 );
 
-export const loginAction = createAsyncThunk(
+export const checkAuthAction = createAsyncThunk(
   'client/login',
   async () => {
     try {
