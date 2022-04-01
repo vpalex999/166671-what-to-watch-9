@@ -3,18 +3,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { useAppSelector } from '../../hooks';
 import { setAuthorizationAction } from '../../store/action';
+import { logoutAction } from '../../store/api-actions';
 
 function UserBlock(): JSX.Element {
   const navigate = useNavigate();
   const { authorizationStatus } = useAppSelector((state) => state);
   const dispatch = useDispatch();
   const isAuthorized = authorizationStatus === AuthorizationStatus.Auth;
-
-  const onSig = () => {
-    if (isAuthorized) {
-      dispatch(setAuthorizationAction(AuthorizationStatus.NoAuth));
-    }
-  };
 
   return (
     <ul className="user-block">
@@ -32,7 +27,13 @@ function UserBlock(): JSX.Element {
         <Link
           to={isAuthorized ? AppRoute.Root : AppRoute.Login}
           className="user-block__link"
-          onClick={onSig}
+          onClick={(evt) => {
+            if (isAuthorized) {
+              evt.preventDefault();
+              dispatch(setAuthorizationAction(AuthorizationStatus.NoAuth));
+              dispatch(logoutAction());
+            }
+          }}
         >
           {isAuthorized ? 'Sign out' : 'Sign In'}
         </Link>
