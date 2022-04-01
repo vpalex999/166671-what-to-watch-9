@@ -1,7 +1,8 @@
-import { FormEvent, useRef } from 'react';
+import { FormEvent, useRef, useState } from 'react';
 import LogoLight from '../../components/logo-light/logo-light';
 import Logo from '../../components/logo/logo';
 import Footer from '../../components/page-footer/page-footer';
+import SignInField from '../../components/sign-in-field/sign-in-field';
 import { useAppDispatch } from '../../hooks';
 import { loginAction } from '../../store/api-actions';
 import { AuthData } from '../../types/auth-data';
@@ -12,6 +13,8 @@ function SignInPage(): JSX.Element {
 
   const dispatch = useAppDispatch();
 
+  const [isValidEmail, setIsValidEmail] = useState(true);
+
   const onSubmit = (authData: AuthData): void => {
     dispatch(loginAction(authData));
   };
@@ -20,10 +23,14 @@ function SignInPage(): JSX.Element {
     evt.preventDefault();
 
     if (loginRef.current !== null && passwordRef.current !== null) {
-      onSubmit({
-        email: loginRef.current.value,
-        password: passwordRef.current.value,
-      });
+      if (loginRef.current.value.length === 0) {
+        setIsValidEmail(false);
+      } else {
+        onSubmit({
+          email: loginRef.current.value,
+          password: passwordRef.current.value,
+        });
+      }
     }
   };
 
@@ -37,8 +44,16 @@ function SignInPage(): JSX.Element {
 
       <div className="sign-in user-page__content">
         <form action="#" className="sign-in__form" onSubmit={onLogin}>
+          {!isValidEmail && (
+            <div className="sign-in__message">
+              <p>Please enter a valid email address</p>
+            </div>
+          )}
+
           <div className="sign-in__fields">
-            <div className="sign-in__field">
+            <SignInField
+              className={isValidEmail ? '' : 'sign-in__field--error'}
+            >
               <input
                 ref={loginRef}
                 className="sign-in__input"
@@ -53,8 +68,8 @@ function SignInPage(): JSX.Element {
               >
                 Email address
               </label>
-            </div>
-            <div className="sign-in__field">
+            </SignInField>
+            <SignInField>
               <input
                 ref={passwordRef}
                 className="sign-in__input"
@@ -69,7 +84,7 @@ function SignInPage(): JSX.Element {
               >
                 Password
               </label>
-            </div>
+            </SignInField>
           </div>
           <div className="sign-in__submit">
             <button className="sign-in__btn" type="submit">
