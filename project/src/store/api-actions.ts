@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { api, store } from '.';
+import { api, store } from '../store';
 import { APIRoute, AuthorizationStatus, TIMEOUT_SHOW_ERROR } from '../const';
 import { errorHandle } from '../services/error-handle';
 import { FilmDataServerList } from '../types/film';
@@ -7,6 +7,7 @@ import { AuthData } from '../types/auth-data';
 import { adaptFilmToClient } from '../util';
 import { loadFilmsAction, setAuthorizationAction, setErrorAction } from './action';
 import { UserData } from '../types/user-data';
+import { saveToken } from '../services/token';
 
 
 export const fetchFilmsAction = createAsyncThunk(
