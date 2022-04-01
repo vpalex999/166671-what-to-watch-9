@@ -3,8 +3,10 @@ import { api, store } from '.';
 import { APIRoute, AuthorizationStatus, TIMEOUT_SHOW_ERROR } from '../const';
 import { errorHandle } from '../services/error-handle';
 import { FilmDataServerList } from '../types/film';
+import { AuthData } from '../types/auth-data';
 import { adaptFilmToClient } from '../util';
 import { loadFilmsAction, setAuthorizationAction, setErrorAction } from './action';
+import { UserData } from '../types/user-data';
 
 
 export const fetchFilmsAction = createAsyncThunk(
@@ -30,10 +32,24 @@ export const clearErrorAction = createAsyncThunk(
 );
 
 export const checkAuthAction = createAsyncThunk(
-  'client/login',
+  'client/checkAuth',
   async () => {
     try {
       await api.get(APIRoute.Login);
+      store.dispatch(setAuthorizationAction(AuthorizationStatus.Auth));
+    } catch (error) {
+      errorHandle(error);
+      store.dispatch(setAuthorizationAction(AuthorizationStatus.NoAuth));
+    }
+  },
+);
+
+export const loginAction = createAsyncThunk(
+  'client/login',
+  async ({ email, password }: AuthData) => {
+    try {
+      const {data: {token}} = await api.post<UserData>(APIRoute.Login, {email, password});
+      saveToken(token);
       store.dispatch(setAuthorizationAction(AuthorizationStatus.Auth));
     } catch (error) {
       errorHandle(error);
