@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import AddReviewPage from './pages/add-review/add-review';
 import FilmPage from './pages/film-page/film-page';
 import MainPage from './pages/main/main';
@@ -7,10 +7,12 @@ import PlayPage from './pages/play/play';
 import SignInPage from './pages/sign-in/sign-in';
 import PrivateRoute from './components/private-route/private-route';
 import NotFoundPage from './pages/not-found/not-found';
-import { AppRoute, AuthorizationStatus } from './const';
+import { AppRoute } from './const';
 import { useAppSelector } from './hooks';
 import { mokPlayerData } from './moks/player';
 import LoadingScreen from './components/loading-screen/loading-screen';
+import browserHistory from './browser-history';
+import HistoryRouter from './components/history-route/history-route';
 
 
 function App(): JSX.Element {
@@ -22,7 +24,7 @@ function App(): JSX.Element {
   }
 
   return (
-    <BrowserRouter>
+    <HistoryRouter history={browserHistory}>
       <Routes>
         <Route
           path={AppRoute.Root}
@@ -39,9 +41,7 @@ function App(): JSX.Element {
         <Route
           path={AppRoute.MyList}
           element={
-            <PrivateRoute
-              authorizationStatus={AuthorizationStatus.Auth}
-            >
+            <PrivateRoute >
               <MyListPage
                 films={films}
               />
@@ -73,7 +73,7 @@ function App(): JSX.Element {
           element={<NotFoundPage />}
         />
       </Routes>
-    </BrowserRouter>
+    </HistoryRouter>
   );
 }
 

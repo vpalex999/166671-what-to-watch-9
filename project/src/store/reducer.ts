@@ -1,13 +1,14 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { FilmData } from '../types/film';
-import { changeGenreAction, loadFilmsAction, setErrorAction } from '../store/action';
-import { ALL_GENRES } from '../const';
+import { changeGenreAction, loadFilmsAction, setAuthorizationAction, setErrorAction } from '../store/action';
+import { ALL_GENRES, AuthorizationStatus } from '../const';
 type InitialState = {
   filterGenre: string;
   films: FilmData[];
   filmCountPerStep: number;
   isDataLoaded: boolean;
   error: string;
+  authorizationStatus: AuthorizationStatus;
 };
 
 const initialState: InitialState = {
@@ -16,6 +17,7 @@ const initialState: InitialState = {
   filmCountPerStep: 8,
   isDataLoaded: false,
   error: '',
+  authorizationStatus: AuthorizationStatus.Unknown,
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -29,6 +31,9 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setErrorAction, (state, action) => {
       state.error = action.payload;
+    })
+    .addCase(setAuthorizationAction, (state, action) => {
+      state.authorizationStatus = action.payload;
     });
 });
 

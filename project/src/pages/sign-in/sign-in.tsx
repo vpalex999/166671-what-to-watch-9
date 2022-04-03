@@ -1,8 +1,39 @@
+import { FormEvent, useRef, useState } from 'react';
 import LogoLight from '../../components/logo-light/logo-light';
 import Logo from '../../components/logo/logo';
 import Footer from '../../components/page-footer/page-footer';
+import SignInField from '../../components/sign-in-field/sign-in-field';
+import { useAppDispatch } from '../../hooks';
+import { loginAction } from '../../store/api-actions';
+import { AuthData } from '../../types/auth-data';
 
 function SignInPage(): JSX.Element {
+  const loginRef = useRef<HTMLInputElement | null>(null);
+  const passwordRef = useRef<HTMLInputElement | null>(null);
+
+  const dispatch = useAppDispatch();
+
+  const [isValidEmail, setIsValidEmail] = useState(true);
+
+  const onSubmit = (authData: AuthData): void => {
+    dispatch(loginAction(authData));
+  };
+
+  const onLogin = (evt: FormEvent<HTMLFormElement>) => {
+    evt.preventDefault();
+
+    if (loginRef.current !== null && passwordRef.current !== null) {
+      if (loginRef.current.value.length === 0) {
+        setIsValidEmail(false);
+      } else {
+        onSubmit({
+          email: loginRef.current.value,
+          password: passwordRef.current.value,
+        });
+      }
+    }
+  };
+
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
@@ -12,10 +43,19 @@ function SignInPage(): JSX.Element {
       </header>
 
       <div className="sign-in user-page__content">
-        <form action="#" className="sign-in__form">
+        <form action="#" className="sign-in__form" onSubmit={onLogin}>
+          {!isValidEmail && (
+            <div className="sign-in__message">
+              <p>Please enter a valid email address</p>
+            </div>
+          )}
+
           <div className="sign-in__fields">
-            <div className="sign-in__field">
+            <SignInField
+              className={isValidEmail ? '' : 'sign-in__field--error'}
+            >
               <input
+                ref={loginRef}
                 className="sign-in__input"
                 type="email"
                 placeholder="Email address"
@@ -28,9 +68,10 @@ function SignInPage(): JSX.Element {
               >
                 Email address
               </label>
-            </div>
-            <div className="sign-in__field">
+            </SignInField>
+            <SignInField>
               <input
+                ref={passwordRef}
                 className="sign-in__input"
                 type="password"
                 placeholder="Password"
@@ -43,7 +84,7 @@ function SignInPage(): JSX.Element {
               >
                 Password
               </label>
-            </div>
+            </SignInField>
           </div>
           <div className="sign-in__submit">
             <button className="sign-in__btn" type="submit">
