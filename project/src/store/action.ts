@@ -1,6 +1,7 @@
 import { createAction } from '@reduxjs/toolkit';
 import { Action, AppRoute, AuthorizationStatus } from '../const';
-import { FilmDataList } from '../types/film';
+import { FilmData, FilmDataList } from '../types/film';
+import { ReviewData } from '../types/review';
 
 export const changeGenreAction = createAction(
   Action.CHANGE_GENRE,
@@ -8,6 +9,12 @@ export const changeGenreAction = createAction(
 );
 
 export const loadFilmsAction = createAction<FilmDataList>(Action.LOAD_FILMS);
+
+export const loadFilmAction = createAction<FilmData>(Action.LOAD_FILM);
+
+export const loadSameFilmsAction = createAction<FilmData[]>(Action.LOAD_SAME_FILMS);
+
+export const loadReviewsAction = createAction<ReviewData[]>(Action.LOAD_REVIEWS);
 
 export const setErrorAction = createAction<string>(Action.CLIENT_ERROR);
 

@@ -40,6 +40,9 @@ export enum LevelRating {
 export enum Action {
   CHANGE_GENRE = 'main/changeGenre',
   LOAD_FILMS = 'data/loadFilms',
+  LOAD_FILM = 'data/loadFilm',
+  LOAD_SAME_FILMS = 'data/loadSameFilms',
+  LOAD_REVIEWS = 'data/loadReviews',
   CLIENT_ERROR = 'client/setError',
   AUTHORIZE = 'client/Authorize',
   REDIRECT_TO_ROUTE = 'redirectToRoute',

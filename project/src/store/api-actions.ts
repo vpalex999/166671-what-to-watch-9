@@ -7,17 +7,21 @@ import {
   TIMEOUT_SHOW_ERROR
 } from '../const';
 import { errorHandle } from '../services/error-handle';
-import { FilmDataServerList } from '../types/film';
+import { FilmDataServer, FilmDataServerList } from '../types/film';
 import { AuthData } from '../types/auth-data';
-import { adaptFilmToClient } from '../util';
+import { adaptCommentToClient, adaptFilmToClient } from '../util';
 import {
   loadFilmsAction,
+  loadFilmAction,
   redirectToRoute,
   setAuthorizationAction,
-  setErrorAction
+  setErrorAction,
+  loadSameFilmsAction,
+  loadReviewsAction
 } from './action';
 import { UserData } from '../types/user-data';
 import { dropToken, saveToken } from '../services/token';
+import { ReviewDataServer } from '../types/review';
 
 export const fetchFilmsAction = createAsyncThunk(
   'data/fetchFilms',
@@ -27,6 +31,44 @@ export const fetchFilmsAction = createAsyncThunk(
       store.dispatch(
         loadFilmsAction(data.map((film) => adaptFilmToClient(film))),
       );
+    } catch (error) {
+      errorHandle(error);
+    }
+  },
+);
+
+export const fetchFilmAction = createAsyncThunk(
+  'data/fetchFilm',
+  async (filmId: number) => {
+    try {
+      const { data } = await api.get<FilmDataServer>(`${APIRoute.Films}/${filmId}`);
+      store.dispatch(loadFilmAction(adaptFilmToClient(data)));
+    } catch (error) {
+      errorHandle(error);
+    }
+  },
+);
+
+export const fetchSameFilmsAction = createAsyncThunk(
+  'data/fetchSameFilms',
+  async (filmId: number) => {
+    try {
+      const { data } = await api.get<FilmDataServerList>(`${APIRoute.Films}/${filmId}/similar`);
+      store.dispatch(loadSameFilmsAction(data
+        .map((film) => adaptFilmToClient(film))
+        .slice(0, 3)));
+    } catch (error) {
+      errorHandle(error);
+    }
+  },
+);
+
+export const fetchReviewsAction = createAsyncThunk(
+  'data/fetchReviews',
+  async (filmId: number) => {
+    try {
+      const { data } = await api.get<ReviewDataServer[]>(`${APIRoute.Comments}/${filmId}`);
+      store.dispatch(loadReviewsAction(data.map((comment) => adaptCommentToClient(comment))));
     } catch (error) {
       errorHandle(error);
     }
