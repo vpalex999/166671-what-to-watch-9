@@ -48,15 +48,6 @@ function MainPage({ promo }: MainScreenProps): JSX.Element {
             <FilmCardDesc data={promo}>
               <CardButtons />
             </FilmCardDesc>
-
-            {/* <div className="film-card__desc">
-              <h2 className="film-card__title">{promo.title}</h2>
-              <p className="film-card__meta">
-                <span className="film-card__genre">{promo.genre}</span>
-                <span className="film-card__year">{promo.released}</span>
-              </p>
-              <CardButtons />
-            </div> */}
           </div>
         </div>
       </section>
