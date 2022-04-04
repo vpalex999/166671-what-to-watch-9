@@ -10,6 +10,8 @@ import { useAppSelector } from '../../hooks';
 import { getSameFilms } from '../../util';
 import ButtonMore from '../../components/button-more/button-more';
 import { useEffect, useState } from 'react';
+import FilmCardBg from '../../components/film-card-bg/film-card-bg';
+import FilmCardDesc from '../../components/film-card-desc/film-card-desc';
 
 type MainScreenProps = {
   promo: FilmData;
@@ -34,9 +36,7 @@ function MainPage({ promo }: MainScreenProps): JSX.Element {
   return (
     <div>
       <section className="film-card">
-        <div className="film-card__bg">
-          <img src={promo.background} alt={promo.title} />
-        </div>
+        <FilmCardBg background={promo.background} alt={promo.title} />
 
         <h1 className="visually-hidden">WTW</h1>
 
@@ -45,15 +45,18 @@ function MainPage({ promo }: MainScreenProps): JSX.Element {
         <div className="film-card__wrap">
           <div className="film-card__info">
             <FilmCardPoster poster={promo.poster} alt={promo.title} />
+            <FilmCardDesc data={promo}>
+              <CardButtons />
+            </FilmCardDesc>
 
-            <div className="film-card__desc">
+            {/* <div className="film-card__desc">
               <h2 className="film-card__title">{promo.title}</h2>
               <p className="film-card__meta">
                 <span className="film-card__genre">{promo.genre}</span>
                 <span className="film-card__year">{promo.released}</span>
               </p>
               <CardButtons />
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
