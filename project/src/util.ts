@@ -1,5 +1,6 @@
 import { ALL_GENRES, LevelRating } from './const';
 import { FilmData, FilmDataServer } from './types/film';
+import { ReviewData, ReviewDataServer } from './types/review';
 
 export const getSameFilms = (genre: string, films: FilmData[]): FilmData[] =>
   genre === ALL_GENRES
@@ -55,4 +56,17 @@ export const adaptFilmToClient = (film: FilmDataServer): FilmData => {
   };
 
   return adaptedFilm;
+};
+
+export const adaptCommentToClient = (comment: ReviewDataServer): ReviewData => {
+  const adaptedComment: ReviewData = {
+    id: comment.id.toString(),
+    author: comment.user.name,
+    dateTime: comment.date,
+    displayDate: comment.date,
+    rating: comment.rating.toString(),
+    text: comment.comment,
+  };
+
+  return adaptedComment;
 };

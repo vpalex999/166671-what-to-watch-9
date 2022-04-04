@@ -13,7 +13,7 @@ function Review({ review }: ReviewProps): JSX.Element {
         </p>
 
         <footer className="review__details">
-          <cite className="review__author">{review.autor}</cite>
+          <cite className="review__author">{review.author}</cite>
           <time className="review__date" dateTime={review.dateTime}>
             {review.displayDate}
           </time>
