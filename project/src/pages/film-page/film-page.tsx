@@ -12,6 +12,7 @@ import FilmCardDesc from '../../components/film-card-desc/film-card-desc';
 import LoadingScreen from '../../components/loading-screen/loading-screen';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchFilmAction, fetchReviewsAction, fetchSameFilmsAction } from '../../store/api-actions';
+import { useEffect } from 'react';
 
 // TODO:
 // Напишите всю необходимую логику для получения информации по одному фильму на странице «Film».
@@ -23,13 +24,17 @@ import { fetchFilmAction, fetchReviewsAction, fetchSameFilmsAction } from '../..
 function FilmPage(): JSX.Element {
 
   const params = useParams();
+  const { id } = params;
   const dispatch = useAppDispatch();
 
-  if (params.id) {
-    dispatch(fetchSameFilmsAction(Number(params.id)));
-    dispatch(fetchFilmAction(Number(params.id)));
-    dispatch(fetchReviewsAction(Number(params.id)));
-  }
+  useEffect(() => {
+    if (id) {
+      const filmId = Number(id);
+      dispatch(fetchSameFilmsAction(filmId));
+      dispatch(fetchFilmAction(filmId));
+      dispatch(fetchReviewsAction(filmId));
+    }
+  }, [id, dispatch]);
 
   const { film, sameFilms, reviews } = useAppSelector((state) => state);
 
