@@ -45,6 +45,7 @@ export const fetchFilmAction = createAsyncThunk(
       store.dispatch(loadFilmAction(adaptFilmToClient(data)));
     } catch (error) {
       errorHandle(error);
+      store.dispatch(redirectToRoute(AppRoute.NotFound));
     }
   },
 );

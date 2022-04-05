@@ -14,6 +14,7 @@ export enum AppRoute {
   Film = '/films/:id',
   AddReview = '/films/:id/review',
   Play = '/player/:id',
+  NotFound = '/404',
 }
 
 export const CardTabName = {
