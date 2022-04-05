@@ -54,7 +54,7 @@ function FilmPage(): JSX.Element {
           <div className="film-card__wrap">
             <FilmCardDesc data={film}>
               <CardButtons>
-                <Link to={AppRoute.AddReview} className="btn film-card__button">
+                <Link to={`${AppRoute.Films}/${id}/review`} className="btn film-card__button">
                   Add review
                 </Link>
               </CardButtons>
