@@ -32,10 +32,10 @@ function FilmPage(): JSX.Element {
   }
 
   const { film, sameFilms, reviews } = useAppSelector((state) => state);
+
   if (film === null) {
     return (<LoadingScreen />);
   }
-
   return (
     <>
       <section className="film-card film-card--full">
