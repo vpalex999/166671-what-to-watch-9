@@ -5,7 +5,7 @@ import FilmList from '../../components/film-list/film-list';
 import LogoLight from '../../components/logo-light/logo-light';
 import Footer from '../../components/page-footer/page-footer';
 import CardTabContainer from '../../components/card-tab-container/card-tab-container';
-import { AppRoute } from '../../const';
+import { AppRoute, AuthorizationStatus } from '../../const';
 import FilmCardPosterBig from '../../components/film-card-poster-big/film-card-poster-big';
 import FilmCardBg from '../../components/film-card-bg/film-card-bg';
 import FilmCardDesc from '../../components/film-card-desc/film-card-desc';
@@ -13,13 +13,6 @@ import LoadingScreen from '../../components/loading-screen/loading-screen';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchFilmAction, fetchReviewsAction, fetchSameFilmsAction } from '../../store/api-actions';
 import { useEffect } from 'react';
-
-// TODO:
-// Напишите всю необходимую логику для получения информации по одному фильму на странице «Film».
-// 1. Когда пользователь переходит на страницу с детальной информацией о фильме (/films/:id),
-//    с сервера должна быть запрошена информация только по этому фильму.
-// 2. Дополнительно нужно запросить информацию по похожим фильмам
-// 3. и списку комментариев к фильму.
 
 function FilmPage(): JSX.Element {
 
@@ -36,7 +29,19 @@ function FilmPage(): JSX.Element {
     }
   }, [id, dispatch]);
 
-  const { film, sameFilms, reviews } = useAppSelector((state) => state);
+  const { film, sameFilms, reviews, authorizationStatus } = useAppSelector((state) => state);
+
+  // const isAuthrazed = authorizationStatus === AuthorizationStatus.Auth;
+
+  const addReviewButton = () => {
+    if (authorizationStatus === AuthorizationStatus.Auth) {
+      return (
+        <Link to={`${AppRoute.Films}/${id}/review`} className="btn film-card__button">
+          Add review
+        </Link>
+      );
+    }
+  };
 
   if (film === null) {
     return (<LoadingScreen />);
@@ -54,9 +59,7 @@ function FilmPage(): JSX.Element {
           <div className="film-card__wrap">
             <FilmCardDesc data={film}>
               <CardButtons>
-                <Link to={`${AppRoute.Films}/${id}/review`} className="btn film-card__button">
-                  Add review
-                </Link>
+                {addReviewButton()}
               </CardButtons>
             </FilmCardDesc>
           </div>
