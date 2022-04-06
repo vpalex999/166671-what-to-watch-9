@@ -1,19 +1,23 @@
 import AddReview from '../../components/add-review/add-review';
 import FilmCardBg from '../../components/film-card-bg/film-card-bg';
 import FilmCardPosterSmall from '../../components/film-card-poster-small/film-card-poster-small';
+import LoadingScreen from '../../components/loading-screen/loading-screen';
 import Logo from '../../components/logo/logo';
 import UserBlock from '../../components/user-block/user-block';
-import { FilmData } from '../../types/film';
+import { useAppSelector } from '../../hooks';
 
-type AddReviewPageProps = {
-  film: FilmData;
-}
+function AddReviewPage(): JSX.Element {
 
-function AddReviewPage({ film }: AddReviewPageProps): JSX.Element {
+  const { film } = useAppSelector((state) => state);
+
+  if (film === null) {
+    return <LoadingScreen />;
+  }
+
   return (
     <section className="film-card film-card--full">
       <div className="film-card__header">
-        <FilmCardBg background={film.background} alt={film.title}/>
+        <FilmCardBg background={film.background} alt={film.title} />
 
         <h1 className="visually-hidden">WTW</h1>
 
@@ -22,10 +26,14 @@ function AddReviewPage({ film }: AddReviewPageProps): JSX.Element {
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <a href="film-page.html" className="breadcrumbs__link">{film.title}</a>
+                <a href="film-page.html" className="breadcrumbs__link">
+                  {film.title}
+                </a>
               </li>
               <li className="breadcrumbs__item">
-                <a href="#todo" className="breadcrumbs__link">Add review</a>
+                <a href="#todo" className="breadcrumbs__link">
+                  Add review
+                </a>
               </li>
             </ul>
           </nav>
@@ -36,8 +44,7 @@ function AddReviewPage({ film }: AddReviewPageProps): JSX.Element {
       </div>
 
       <AddReview />
-
-    </section >
+    </section>
   );
 }
 

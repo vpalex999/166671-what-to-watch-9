@@ -6,13 +6,20 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
+export enum ReviewSendingStatus {
+  Sending = 'SENDING',
+  NoSending = 'NO_SENDING',
+}
+
 export enum AppRoute {
   Root = '/',
   Login = '/login',
   MyList = '/mylist',
+  Films = '/films',
   Film = '/films/:id',
   AddReview = '/films/:id/review',
   Play = '/player/:id',
+  NotFound = '/404',
 }
 
 export const CardTabName = {
@@ -40,15 +47,20 @@ export enum LevelRating {
 export enum Action {
   CHANGE_GENRE = 'main/changeGenre',
   LOAD_FILMS = 'data/loadFilms',
+  LOAD_FILM = 'data/loadFilm',
+  LOAD_SAME_FILMS = 'data/loadSameFilms',
+  LOAD_REVIEWS = 'data/loadReviews',
   CLIENT_ERROR = 'client/setError',
   AUTHORIZE = 'client/Authorize',
   REDIRECT_TO_ROUTE = 'redirectToRoute',
+  REVIEW_SENDING = 'data/sending_review',
 }
 
 export enum APIRoute {
   Films = '/films',
   Login = '/login',
   Logout = '/logout',
+  Comments = '/comments'
 }
 
 export enum HTTP_CODE {

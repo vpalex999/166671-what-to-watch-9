@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import AddReviewPage from './pages/add-review/add-review';
+import AddReviewPage from './pages/add-review-page/add-review-page';
 import FilmPage from './pages/film-page/film-page';
 import MainPage from './pages/main/main';
 import MyListPage from './pages/my-list/my-list';
@@ -14,64 +14,39 @@ import LoadingScreen from './components/loading-screen/loading-screen';
 import browserHistory from './browser-history';
 import HistoryRouter from './components/history-route/history-route';
 
-
 function App(): JSX.Element {
   const { films, isDataLoaded } = useAppSelector((state) => state);
   if (!isDataLoaded) {
-    return (
-      <LoadingScreen />
-    );
+    return <LoadingScreen />;
   }
 
   return (
     <HistoryRouter history={browserHistory}>
       <Routes>
-        <Route
-          path={AppRoute.Root}
-          element={
-            <MainPage
-              promo={films[0]}
-            />
-          }
-        />
-        <Route
-          path={AppRoute.Login}
-          element={<SignInPage />}
-        />
+        <Route path={AppRoute.Root} element={<MainPage promo={films[0]} />} />
+        <Route path={AppRoute.Login} element={<SignInPage />} />
         <Route
           path={AppRoute.MyList}
           element={
-            <PrivateRoute >
-              <MyListPage
-                films={films}
-              />
+            <PrivateRoute>
+              <MyListPage films={films} />
+            </PrivateRoute>
+          }
+        />
+        <Route path={AppRoute.Film} element={<FilmPage />} />
+        <Route
+          path={AppRoute.AddReview}
+          element={
+            <PrivateRoute>
+              <AddReviewPage />
             </PrivateRoute>
           }
         />
         <Route
-          path={AppRoute.Film}
-          element={<FilmPage />}
-        />
-        <Route
-          path={AppRoute.AddReview}
-          element={
-            <AddReviewPage
-              film={films[0]}
-            />
-          }
-        />
-        <Route
           path={AppRoute.Play}
-          element={
-            <PlayPage
-              data={mokPlayerData}
-            />
-          }
+          element={<PlayPage data={mokPlayerData} />}
         />
-        <Route
-          path="*"
-          element={<NotFoundPage />}
-        />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </HistoryRouter>
   );
