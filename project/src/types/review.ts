@@ -18,3 +18,14 @@ export type ReviewDataServer = {
     name: string
   }
 }
+
+export type ReviewFromClientSend = {
+  filmId: string | undefined;
+  rating: string,
+  ['review-text']: string,
+}
+
+export type ReviewToServerSend = {
+  rating: number,
+  comment: string,
+}

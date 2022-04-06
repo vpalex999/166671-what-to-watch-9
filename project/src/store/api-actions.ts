@@ -4,12 +4,13 @@ import {
   APIRoute,
   AppRoute,
   AuthorizationStatus,
+  ReviewSendingStatus,
   TIMEOUT_SHOW_ERROR
 } from '../const';
 import { errorHandle } from '../services/error-handle';
 import { FilmDataServer, FilmDataServerList } from '../types/film';
 import { AuthData } from '../types/auth-data';
-import { adaptCommentToClient, adaptFilmToClient } from '../util';
+import { adaptCommentToClient, adaptFilmToClient, adaptReviewSendData } from '../util';
 import {
   loadFilmsAction,
   loadFilmAction,
@@ -17,11 +18,12 @@ import {
   setAuthorizationAction,
   setErrorAction,
   loadSameFilmsAction,
-  loadReviewsAction
+  loadReviewsAction,
+  setReviewSendingAction
 } from './action';
 import { UserData } from '../types/user-data';
 import { dropToken, saveToken } from '../services/token';
-import { ReviewDataServer } from '../types/review';
+import { ReviewDataServer, ReviewFromClientSend, ReviewToServerSend } from '../types/review';
 
 export const fetchFilmsAction = createAsyncThunk(
   'data/fetchFilms',
@@ -73,6 +75,24 @@ export const fetchReviewsAction = createAsyncThunk(
     } catch (error) {
       errorHandle(error);
     }
+  },
+);
+
+export const sendReviewAction = createAsyncThunk(
+  'data/sendReview',
+  async (review: ReviewFromClientSend) => {
+    const data = adaptReviewSendData(review);
+    store.dispatch(setReviewSendingAction(ReviewSendingStatus.Sending));
+
+    try {
+      api.post<ReviewToServerSend>(`${APIRoute.Comments}/${review.filmId}`, data);
+    } catch (error) {
+      store.dispatch(setReviewSendingAction(ReviewSendingStatus.NoSending));
+      errorHandle(error);
+    }
+
+    store.dispatch(setReviewSendingAction(ReviewSendingStatus.NoSending));
+    store.dispatch(redirectToRoute(`${AppRoute.Films}/${review.filmId}`));
   },
 );
 

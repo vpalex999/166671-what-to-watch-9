@@ -1,5 +1,5 @@
 import { createAction } from '@reduxjs/toolkit';
-import { Action, AppRoute, AuthorizationStatus } from '../const';
+import { Action, AuthorizationStatus, ReviewSendingStatus } from '../const';
 import { FilmData, FilmDataList } from '../types/film';
 import { ReviewData } from '../types/review';
 
@@ -20,4 +20,6 @@ export const setErrorAction = createAction<string>(Action.CLIENT_ERROR);
 
 export const setAuthorizationAction = createAction<AuthorizationStatus>(Action.AUTHORIZE);
 
-export  const redirectToRoute = createAction<AppRoute>(Action.REDIRECT_TO_ROUTE);
+export const redirectToRoute = createAction<string>(Action.REDIRECT_TO_ROUTE);
+
+export const setReviewSendingAction = createAction<ReviewSendingStatus>(Action.REVIEW_SENDING);

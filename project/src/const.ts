@@ -6,6 +6,11 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
+export enum ReviewSendingStatus {
+  Sending = 'SENDING',
+  NoSending = 'NO_SENDING',
+}
+
 export enum AppRoute {
   Root = '/',
   Login = '/login',
@@ -48,6 +53,7 @@ export enum Action {
   CLIENT_ERROR = 'client/setError',
   AUTHORIZE = 'client/Authorize',
   REDIRECT_TO_ROUTE = 'redirectToRoute',
+  REVIEW_SENDING = 'data/sending_review',
 }
 
 export enum APIRoute {

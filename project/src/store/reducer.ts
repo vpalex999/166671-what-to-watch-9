@@ -7,9 +7,10 @@ import {
   setAuthorizationAction,
   setErrorAction,
   loadSameFilmsAction,
-  loadReviewsAction
+  loadReviewsAction,
+  setReviewSendingAction
 } from '../store/action';
-import { ALL_GENRES, AuthorizationStatus } from '../const';
+import { ALL_GENRES, AuthorizationStatus, ReviewSendingStatus } from '../const';
 import { ReviewData } from '../types/review';
 type InitialState = {
   filterGenre: string;
@@ -21,6 +22,7 @@ type InitialState = {
   film: FilmData | null;
   sameFilms: FilmData[];
   reviews: ReviewData[];
+  reviewSendingStatus: ReviewSendingStatus;
 };
 
 const initialState: InitialState = {
@@ -33,6 +35,7 @@ const initialState: InitialState = {
   film: null,
   sameFilms: [],
   reviews: [],
+  reviewSendingStatus: ReviewSendingStatus.NoSending,
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -58,6 +61,9 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(loadReviewsAction, (state, action) => {
       state.reviews = action.payload;
+    })
+    .addCase(setReviewSendingAction, (state, action) => {
+      state.reviewSendingStatus = action.payload;
     });
 });
 

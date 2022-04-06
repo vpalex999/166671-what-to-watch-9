@@ -5,7 +5,6 @@ import LoadingScreen from '../../components/loading-screen/loading-screen';
 import Logo from '../../components/logo/logo';
 import UserBlock from '../../components/user-block/user-block';
 import { useAppSelector } from '../../hooks';
-// import { FilmData } from '../../types/film';
 
 function AddReviewPage(): JSX.Element {
 

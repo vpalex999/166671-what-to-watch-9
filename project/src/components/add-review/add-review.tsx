@@ -1,18 +1,24 @@
 import { ChangeEvent, useState } from 'react';
 
 import { Fragment } from 'react';
+import { useParams } from 'react-router-dom';
+import { ReviewSendingStatus } from '../../const';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { sendReviewAction } from '../../store/api-actions';
+import { ReviewFromClientSend } from '../../types/review';
 
 const DEFAULT_RATING = '8';
 const DEFAULT_REVIEW = '';
 const RANGE_RATING = 10;
 
-type FormData = {
-  rating: string;
-  'review-text': string;
-};
-
 function AddReview(): JSX.Element {
-  const [formData, setFormData] = useState({
+
+  const params = useParams();
+  const { reviewSendingStatus } = useAppSelector((store) => store);
+  const dispatch = useAppDispatch();
+
+  const [formData, setFormData] = useState<ReviewFromClientSend>({
+    filmId: params.id,
     rating: DEFAULT_RATING,
     'review-text': DEFAULT_REVIEW,
   });
@@ -24,10 +30,13 @@ function AddReview(): JSX.Element {
     setFormData({ ...formData, [name]: value });
   };
 
-  const isDisable = (data: FormData): boolean =>
+
+  const isButtonDisable =
     Number(formData.rating) === 0 ||
-    formData['review-text'].length <= 50 ||
+    formData['review-text'].length < 50 ||
     formData['review-text'].length >= 401;
+
+  const isReviewSending = reviewSendingStatus === ReviewSendingStatus.Sending;
 
   return (
     <div className="add-review">
@@ -46,6 +55,7 @@ function AddReview(): JSX.Element {
                     value={index}
                     checked={formData.rating === index.toString()}
                     onChange={onChange}
+                    disabled={isReviewSending}
                   />
                   <label className="rating__label" htmlFor={`star-${index}`}>
                     Rating ${index}
@@ -63,13 +73,17 @@ function AddReview(): JSX.Element {
             placeholder="Review text"
             value={formData['review-text']}
             onChange={onChange}
+            disabled={isReviewSending}
           >
           </textarea>
           <div className="add-review__submit">
             <button
               className="add-review__btn"
               type="submit"
-              disabled={isDisable(formData)}
+              disabled={isButtonDisable || isReviewSending}
+              onClick={() => {
+                dispatch(sendReviewAction(formData));
+              }}
             >
               Post
             </button>
