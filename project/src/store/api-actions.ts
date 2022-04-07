@@ -11,16 +11,16 @@ import { errorHandle } from '../services/error-handle';
 import { FilmDataServer, FilmDataServerList } from '../types/film';
 import { AuthData } from '../types/auth-data';
 import { adaptCommentToClient, adaptFilmToClient, adaptReviewSendData } from '../util';
+import { redirectToRoute } from './action';
 import {
-  loadFilmsAction,
   loadFilmAction,
-  redirectToRoute,
-  setAuthorizationAction,
-  setErrorAction,
+  loadFilmsAction,
   loadSameFilmsAction,
   loadReviewsAction,
   setReviewSendingAction
-} from './action';
+} from './client-data/client-data';
+import { setAuthorizationAction } from './user-process/user-process';
+import { setErrorAction } from './client-process/client-process';
 import { UserData } from '../types/user-data';
 import { dropToken, saveToken } from '../services/token';
 import { ReviewDataServer, ReviewFromClientSend, ReviewToServerSend } from '../types/review';

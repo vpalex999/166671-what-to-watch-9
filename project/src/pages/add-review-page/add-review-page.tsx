@@ -8,7 +8,7 @@ import { useAppSelector } from '../../hooks';
 
 function AddReviewPage(): JSX.Element {
 
-  const { film } = useAppSelector((state) => state);
+  const { film } = useAppSelector(({DATA}) => DATA);
 
   if (film === null) {
     return <LoadingScreen />;

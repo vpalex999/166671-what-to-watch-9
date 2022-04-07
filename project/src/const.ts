@@ -45,13 +45,13 @@ export enum LevelRating {
 }
 
 export enum Action {
-  CHANGE_GENRE = 'main/changeGenre',
+  CHANGE_GENRE = 'client/changeGenre',
   LOAD_FILMS = 'data/loadFilms',
   LOAD_FILM = 'data/loadFilm',
   LOAD_SAME_FILMS = 'data/loadSameFilms',
   LOAD_REVIEWS = 'data/loadReviews',
   CLIENT_ERROR = 'client/setError',
-  AUTHORIZE = 'client/Authorize',
+  AUTHORIZE = 'user/Authorize',
   REDIRECT_TO_ROUTE = 'redirectToRoute',
   REVIEW_SENDING = 'data/sending_review',
 }
@@ -67,4 +67,10 @@ export enum HTTP_CODE {
   BAD_REQUEST = 400,
   UNAUTHORIZED = 401,
   NOT_FOUND = 404,
+}
+
+export enum NameSpace {
+  data = 'DATA',
+  user = 'USER',
+  client = 'CLIENT',
 }

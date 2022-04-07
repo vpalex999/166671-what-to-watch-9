@@ -29,9 +29,8 @@ function FilmPage(): JSX.Element {
     }
   }, [id, dispatch]);
 
-  const { film, sameFilms, reviews, authorizationStatus } = useAppSelector((state) => state);
-
-  // const isAuthrazed = authorizationStatus === AuthorizationStatus.Auth;
+  const { film, sameFilms, reviews } = useAppSelector(({ DATA }) => DATA);
+  const { authorizationStatus } = useAppSelector(({ USER }) => USER);
 
   const addReviewButton = () => {
     if (authorizationStatus === AuthorizationStatus.Auth) {
