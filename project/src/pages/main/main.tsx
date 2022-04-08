@@ -18,7 +18,8 @@ type MainScreenProps = {
 };
 
 function MainPage({ promo }: MainScreenProps): JSX.Element {
-  const { filterGenre, films, filmCountPerStep } = useAppSelector((state) => state);
+  const { films } = useAppSelector(({ DATA }) => DATA);
+  const { filterGenre, filmCountPerStep } = useAppSelector(({ CLIENT }) => CLIENT);
 
   const [filmCount, setFilmCount] = useState(filmCountPerStep);
 

@@ -15,7 +15,7 @@ import browserHistory from './browser-history';
 import HistoryRouter from './components/history-route/history-route';
 
 function App(): JSX.Element {
-  const { films, isDataLoaded } = useAppSelector((state) => state);
+  const { films, isDataLoaded } = useAppSelector(({ DATA }) => DATA);
   if (!isDataLoaded) {
     return <LoadingScreen />;
   }

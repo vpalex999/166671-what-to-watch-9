@@ -2,12 +2,12 @@ import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { useAppSelector } from '../../hooks';
-import { setAuthorizationAction } from '../../store/action';
 import { logoutAction } from '../../store/api-actions';
+import { setAuthorizationAction } from '../../store/user-process/user-process';
 
 function UserBlock(): JSX.Element {
   const navigate = useNavigate();
-  const { authorizationStatus } = useAppSelector((state) => state);
+  const { authorizationStatus } = useAppSelector(({USER}) => USER);
   const dispatch = useDispatch();
   const isAuthorized = authorizationStatus === AuthorizationStatus.Auth;
 

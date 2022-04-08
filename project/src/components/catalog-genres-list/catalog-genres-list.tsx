@@ -1,13 +1,13 @@
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { changeGenreAction } from '../../store/action';
 import CatalogGenresItemActive from '../catalog-genres-item-active/catalog-genres-item-active';
 import CatalogGenresItem from '../catalog-genres-item/catalog-genres-item';
 import { getCatalogGenres } from '../../util';
+import { changeGenreAction } from '../../store/client-process/client-process';
 
 function CatalogGenresList(): JSX.Element {
   const dispatch = useAppDispatch();
-  const filterGenre = useAppSelector((state) => state.filterGenre);
-  const films = useAppSelector((state) => state.films);
+  const { filterGenre } = useAppSelector(({CLIENT}) => CLIENT);
+  const { films } = useAppSelector(({DATA}) => DATA);
 
   const genresList = getCatalogGenres(films);
 

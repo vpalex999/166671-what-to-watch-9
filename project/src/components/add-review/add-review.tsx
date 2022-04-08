@@ -14,7 +14,7 @@ const RANGE_RATING = 10;
 function AddReview(): JSX.Element {
 
   const params = useParams();
-  const { reviewSendingStatus } = useAppSelector((store) => store);
+  const { reviewSendingStatus } = useAppSelector(({DATA}) => DATA);
   const dispatch = useAppDispatch();
 
   const [formData, setFormData] = useState<ReviewFromClientSend>({
