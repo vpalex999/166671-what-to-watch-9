@@ -13,6 +13,7 @@ export type UserProcess = {
 
 export type ClientData = {
   films: FilmData[];
+  promo: FilmData | null;
   isDataLoaded: boolean;
   film: FilmData | null;
   sameFilms: FilmData[];

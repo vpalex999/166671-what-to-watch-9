@@ -14,6 +14,7 @@ import { adaptCommentToClient, adaptFilmToClient, adaptReviewSendData } from '..
 import { redirectToRoute } from './action';
 import {
   loadFilmAction,
+  loadPromoAction,
   loadFilmsAction,
   loadSameFilmsAction,
   loadReviewsAction,
@@ -33,6 +34,18 @@ export const fetchFilmsAction = createAsyncThunk(
       store.dispatch(
         loadFilmsAction(data.map((film) => adaptFilmToClient(film))),
       );
+    } catch (error) {
+      errorHandle(error);
+    }
+  },
+);
+
+export const fetchPromoAction = createAsyncThunk(
+  'data/fetchPromo',
+  async () => {
+    try {
+      const { data } = await api.get<FilmDataServer>(APIRoute.Promo);
+      store.dispatch(loadPromoAction(adaptFilmToClient(data)));
     } catch (error) {
       errorHandle(error);
     }

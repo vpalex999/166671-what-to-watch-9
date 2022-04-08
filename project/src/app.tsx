@@ -23,7 +23,7 @@ function App(): JSX.Element {
   return (
     <HistoryRouter history={browserHistory}>
       <Routes>
-        <Route path={AppRoute.Root} element={<MainPage promo={films[0]} />} />
+        <Route path={AppRoute.Root} element={<MainPage />} />
         <Route path={AppRoute.Login} element={<SignInPage />} />
         <Route
           path={AppRoute.MyList}

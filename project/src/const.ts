@@ -60,7 +60,8 @@ export enum APIRoute {
   Films = '/films',
   Login = '/login',
   Logout = '/logout',
-  Comments = '/comments'
+  Comments = '/comments',
+  Promo = '/promo',
 }
 
 export enum HTTP_CODE {

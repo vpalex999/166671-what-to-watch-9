@@ -4,6 +4,7 @@ import { ClientData } from '../../types/state';
 
 const initialState: ClientData = {
   films: [],
+  promo: null,
   isDataLoaded: false,
   film: null,
   sameFilms: [],
@@ -31,11 +32,15 @@ export const clientData = createSlice({
     setReviewSendingAction: (state, action) => {
       state.reviewSendingStatus = action.payload;
     },
+    loadPromoAction: (state, action) => {
+      state.promo = action.payload;
+    },
   },
 });
 
 export const {
   loadFilmsAction,
+  loadPromoAction,
   loadFilmAction,
   loadSameFilmsAction,
   loadReviewsAction,
