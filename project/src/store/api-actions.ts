@@ -18,7 +18,8 @@ import {
   loadFilmsAction,
   loadSameFilmsAction,
   loadReviewsAction,
-  setReviewSendingAction
+  setReviewSendingAction,
+  loadUserDataAction
 } from './client-data/client-data';
 import { setAuthorizationAction } from './user-process/user-process';
 import { setErrorAction } from './client-process/client-process';
@@ -130,11 +131,10 @@ export const loginAction = createAsyncThunk(
   'client/login',
   async ({ email, password }: AuthData) => {
     try {
-      const {
-        data: { token },
-      } = await api.post<UserData>(APIRoute.Login, { email, password });
-      saveToken(token);
+      const { data } = await api.post<UserData>(APIRoute.Login, { email, password });
+      saveToken(data.token);
       store.dispatch(setAuthorizationAction(AuthorizationStatus.Auth));
+      store.dispatch(loadUserDataAction(data));
       store.dispatch(redirectToRoute(AppRoute.Root));
     } catch (error) {
       errorHandle(error);

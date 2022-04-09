@@ -7,6 +7,7 @@ import { logoutAction } from '../../store/api-actions';
 function UserBlock(): JSX.Element {
   const navigate = useNavigate();
   const { authorizationStatus } = useAppSelector(({ USER }) => USER);
+  const { user: { avatarUrl } } = useAppSelector(({ DATA }) => DATA);
   const dispatch = useDispatch();
   const isAuthorized = authorizationStatus === AuthorizationStatus.Auth;
 
@@ -21,7 +22,7 @@ function UserBlock(): JSX.Element {
               navigate(AppRoute.MyList);
             }}
           >
-            <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+            <img src={avatarUrl} alt="User avatar" width="63" height="63" />
           </div>
         </li>
         <li className="user-block__item">

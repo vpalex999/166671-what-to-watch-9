@@ -10,6 +10,13 @@ const initialState: ClientData = {
   sameFilms: [],
   reviews: [],
   reviewSendingStatus: ReviewSendingStatus.NoSending,
+  user: {
+    avatarUrl: 'img/avatar.jpg',
+    email: null,
+    id: null,
+    name: null,
+    token: '',
+  },
 };
 
 export const clientData = createSlice({
@@ -35,6 +42,9 @@ export const clientData = createSlice({
     loadPromoAction: (state, action) => {
       state.promo = action.payload;
     },
+    loadUserDataAction: (state, action) => {
+      state.user = action.payload;
+    },
   },
 });
 
@@ -44,4 +54,5 @@ export const {
   loadFilmAction,
   loadSameFilmsAction,
   loadReviewsAction,
-  setReviewSendingAction } = clientData.actions;
+  setReviewSendingAction,
+  loadUserDataAction } = clientData.actions;
