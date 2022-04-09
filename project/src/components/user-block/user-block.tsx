@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { useAppSelector } from '../../hooks';
 import { logoutAction } from '../../store/api-actions';
-import { setAuthorizationAction } from '../../store/user-process/user-process';
 
 function UserBlock(): JSX.Element {
   const navigate = useNavigate();
@@ -31,7 +30,6 @@ function UserBlock(): JSX.Element {
             className="user-block__link"
             onClick={(evt) => {
               evt.preventDefault();
-              dispatch(setAuthorizationAction(AuthorizationStatus.NoAuth));
               dispatch(logoutAction());
             }}
           >
