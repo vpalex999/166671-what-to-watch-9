@@ -15,7 +15,7 @@ export type FilmData = {
   poster: string;
   genre: string;
   released: number;
-  runTime: string;
+  runTime: number;
   director: string;
   starring: string[];
   description: string;
