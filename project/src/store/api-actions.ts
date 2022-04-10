@@ -21,7 +21,8 @@ import {
   setReviewSendingAction,
   loadUserDataAction,
   setIsPlayLoadedAction,
-  loadPlayFilmAction
+  loadPlayFilmAction,
+  loadMyListAction
 } from './client-data/client-data';
 import { setAuthorizationAction } from './user-process/user-process';
 import { setErrorAction } from './client-process/client-process';
@@ -165,6 +166,36 @@ export const fetchPlayFilmAction = createAsyncThunk(
     } catch (error) {
       errorHandle(error);
       store.dispatch(redirectToRoute(AppRoute.NotFound));
+    }
+  },
+);
+
+export const fetchMyListAction = createAsyncThunk(
+  'data/fetchMyList',
+  async () => {
+    try {
+      const { data } = await api.get<FilmDataServerList>(APIRoute.Favorite);
+      store.dispatch(
+        loadMyListAction(data.map((film) => adaptFilmToClient(film))),
+      );
+    } catch (error) {
+      errorHandle(error);
+    }
+  },
+);
+
+type FavoriteStatus = {
+  filmId: number;
+  status: number;
+}
+
+export const sendFilmStatus = createAsyncThunk(
+  'data/sendFavoriteFilmStatus',
+  async ({ filmId, status }: FavoriteStatus) => {
+    try {
+      await api.put<FilmDataServer>(`${APIRoute.Favorite}/${filmId}/${status}`);
+    } catch (error) {
+      errorHandle(error);
     }
   },
 );

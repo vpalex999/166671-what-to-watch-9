@@ -19,6 +19,7 @@ const initialState: ClientData = {
   },
   isPlayLoaded: false,
   playFilm: null,
+  myList: [],
 };
 
 export const clientData = createSlice({
@@ -54,6 +55,12 @@ export const clientData = createSlice({
       state.playFilm = action.payload;
       state.isPlayLoaded = true;
     },
+    loadMyListAction: (state, action) => {
+      state.myList = action.payload;
+    },
+    clearMyListAction: (state) => {
+      state.myList = [];
+    },
   },
 });
 
@@ -67,4 +74,6 @@ export const {
   loadUserDataAction,
   setIsPlayLoadedAction,
   loadPlayFilmAction,
+  loadMyListAction,
+  clearMyListAction,
 } = clientData.actions;

@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { useAppSelector } from '../../hooks';
-import { logoutAction } from '../../store/api-actions';
+import { fetchMyListAction, logoutAction } from '../../store/api-actions';
 
 function UserBlock(): JSX.Element {
   const navigate = useNavigate();
@@ -19,6 +19,7 @@ function UserBlock(): JSX.Element {
           <div
             className="user-block__avatar"
             onClick={() => {
+              dispatch(fetchMyListAction());
               navigate(AppRoute.MyList);
             }}
           >
@@ -32,6 +33,7 @@ function UserBlock(): JSX.Element {
             onClick={(evt) => {
               evt.preventDefault();
               dispatch(logoutAction());
+              dispatch(clearMyListAction());
             }}
           >
             Sign out
@@ -49,3 +51,7 @@ function UserBlock(): JSX.Element {
 }
 
 export default UserBlock;
+function clearMyListAction(): any {
+  throw new Error('Function not implemented.');
+}
+

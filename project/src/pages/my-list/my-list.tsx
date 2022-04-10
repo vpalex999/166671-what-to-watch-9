@@ -3,13 +3,11 @@ import LogoLight from '../../components/logo-light/logo-light';
 import Logo from '../../components/logo/logo';
 import Footer from '../../components/page-footer/page-footer';
 import UserBlock from '../../components/user-block/user-block';
-import { FilmData } from '../../types/film';
+import { useAppSelector } from '../../hooks';
 
-type MyListProps = {
-  films: FilmData[];
-};
+function MyListPage(): JSX.Element {
+  const { myList } = useAppSelector(({ DATA }) => DATA);
 
-function MyListPage({ films }: MyListProps): JSX.Element {
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
@@ -20,7 +18,7 @@ function MyListPage({ films }: MyListProps): JSX.Element {
 
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
-        <FilmList films={films} />
+        <FilmList films={myList} />
       </section>
 
       <Footer>

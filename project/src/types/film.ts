@@ -22,6 +22,7 @@ export type FilmData = {
   rating: Rating;
   link: string;
   trailer: string;
+  isFavorite: boolean;
 }
 
 export type FilmDataServer = {

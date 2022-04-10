@@ -57,6 +57,7 @@ export const adaptFilmToClient = (film: FilmDataServer): FilmData => {
     },
     link: film.videoLink,
     trailer: film.previewVideoLink,
+    isFavorite: film.isFavorite,
   };
 
   return adaptedFilm;

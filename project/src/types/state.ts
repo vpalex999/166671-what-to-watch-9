@@ -23,6 +23,7 @@ export type ClientData = {
   user: UserData;
   isPlayLoaded: boolean;
   playFilm: FilmData | null;
+  myList: FilmData[];
 }
 
 export type ClientProcess = {
