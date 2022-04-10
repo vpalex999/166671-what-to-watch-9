@@ -17,6 +17,8 @@ const initialState: ClientData = {
     name: null,
     token: '',
   },
+  isPlayLoaded: false,
+  playFilm: null,
 };
 
 export const clientData = createSlice({
@@ -45,6 +47,13 @@ export const clientData = createSlice({
     loadUserDataAction: (state, action) => {
       state.user = action.payload;
     },
+    setIsPlayLoadedAction: (state, action) => {
+      state.isPlayLoaded = action.payload;
+    },
+    loadPlayFilmAction: (state, action) => {
+      state.playFilm = action.payload;
+      state.isPlayLoaded = true;
+    },
   },
 });
 
@@ -55,4 +64,7 @@ export const {
   loadSameFilmsAction,
   loadReviewsAction,
   setReviewSendingAction,
-  loadUserDataAction } = clientData.actions;
+  loadUserDataAction,
+  setIsPlayLoadedAction,
+  loadPlayFilmAction,
+} = clientData.actions;

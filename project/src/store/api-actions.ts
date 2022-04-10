@@ -19,7 +19,9 @@ import {
   loadSameFilmsAction,
   loadReviewsAction,
   setReviewSendingAction,
-  loadUserDataAction
+  loadUserDataAction,
+  setIsPlayLoadedAction,
+  loadPlayFilmAction
 } from './client-data/client-data';
 import { setAuthorizationAction } from './user-process/user-process';
 import { setErrorAction } from './client-process/client-process';
@@ -152,3 +154,17 @@ export const logoutAction = createAsyncThunk('client/logout', async () => {
     errorHandle(error);
   }
 });
+
+export const fetchPlayFilmAction = createAsyncThunk(
+  'data/fetchFilm',
+  async (filmId: number) => {
+    store.dispatch(setIsPlayLoadedAction(false));
+    try {
+      const { data } = await api.get<FilmDataServer>(`${APIRoute.Films}/${filmId}`);
+      store.dispatch(loadPlayFilmAction(adaptFilmToClient(data)));
+    } catch (error) {
+      errorHandle(error);
+      store.dispatch(redirectToRoute(AppRoute.NotFound));
+    }
+  },
+);

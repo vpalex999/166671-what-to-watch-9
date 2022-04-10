@@ -21,6 +21,8 @@ export type ClientData = {
   reviews: ReviewData[];
   reviewSendingStatus: ReviewSendingStatus;
   user: UserData;
+  isPlayLoaded: boolean;
+  playFilm: FilmData | null;
 }
 
 export type ClientProcess = {
