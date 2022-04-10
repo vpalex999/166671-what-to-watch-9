@@ -9,7 +9,6 @@ import PrivateRoute from './components/private-route/private-route';
 import NotFoundPage from './pages/not-found/not-found';
 import { AppRoute } from './const';
 import { useAppSelector } from './hooks';
-import { mokPlayerData } from './moks/player';
 import LoadingScreen from './components/loading-screen/loading-screen';
 import browserHistory from './browser-history';
 import HistoryRouter from './components/history-route/history-route';
@@ -44,7 +43,7 @@ function App(): JSX.Element {
         />
         <Route
           path={AppRoute.Play}
-          element={<PlayPage data={mokPlayerData} />}
+          element={<PlayPage />}
         />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

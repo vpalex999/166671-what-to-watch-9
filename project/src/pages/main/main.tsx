@@ -47,7 +47,7 @@ function MainPage(): JSX.Element {
           <div className="film-card__info">
             <FilmCardPoster poster={promo.poster} alt={promo.title} />
             <FilmCardDesc data={promo}>
-              <CardButtons />
+              <CardButtons filmId={promo.id}/>
             </FilmCardDesc>
           </div>
         </div>

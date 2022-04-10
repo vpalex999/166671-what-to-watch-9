@@ -57,7 +57,7 @@ function FilmPage(): JSX.Element {
 
           <div className="film-card__wrap">
             <FilmCardDesc data={film}>
-              <CardButtons>
+              <CardButtons filmId={film.id}>
                 {addReviewButton()}
               </CardButtons>
             </FilmCardDesc>

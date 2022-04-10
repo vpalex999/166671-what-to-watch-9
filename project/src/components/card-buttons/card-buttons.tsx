@@ -2,17 +2,18 @@ import { useNavigate } from 'react-router-dom';
 import { AppRoute } from '../../const';
 
 type CardButtonsProps = {
+  filmId: number;
   children?: JSX.Element;
 };
 
-function CardButtons(props?: CardButtonsProps): JSX.Element {
+function CardButtons(props: CardButtonsProps): JSX.Element {
   const navigate = useNavigate();
 
   return (
     <div className="film-card__buttons">
       <button
         onClick={() => {
-          navigate(AppRoute.Play);
+          navigate(`${AppRoute.Player}/${props.filmId}`);
         }}
         className="btn btn--play film-card__button"
         type="button"
@@ -34,7 +35,7 @@ function CardButtons(props?: CardButtonsProps): JSX.Element {
         </svg>
         <span>My list</span>
       </button>
-      {props ? props.children : ''}
+      {props.children || ''}
     </div>
   );
 }
