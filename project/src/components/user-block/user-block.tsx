@@ -3,16 +3,18 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { useAppSelector } from '../../hooks';
 import { fetchMyListAction, logoutAction } from '../../store/api-actions';
+import { clearMyListAction } from '../../store/client-data/client-data';
 
 function UserBlock(): JSX.Element {
   const navigate = useNavigate();
   const { authorizationStatus } = useAppSelector(({ USER }) => USER);
-  const { user: { avatarUrl } } = useAppSelector(({ DATA }) => DATA);
+  const {
+    user: { avatarUrl },
+  } = useAppSelector(({ DATA }) => DATA);
   const dispatch = useDispatch();
   const isAuthorized = authorizationStatus === AuthorizationStatus.Auth;
 
   if (isAuthorized) {
-
     return (
       <ul className="user-block">
         <li className="user-block__item">
@@ -45,13 +47,11 @@ function UserBlock(): JSX.Element {
 
   return (
     <div className="user-block">
-      <Link to={AppRoute.Login} className="user-block__link">Sign in</Link>
+      <Link to={AppRoute.Login} className="user-block__link">
+        Sign in
+      </Link>
     </div>
   );
 }
 
 export default UserBlock;
-function clearMyListAction(): any {
-  throw new Error('Function not implemented.');
-}
-
