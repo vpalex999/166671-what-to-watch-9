@@ -1,7 +1,7 @@
 export type UserData = {
-  id: number;
+  id: number | null;
   token: string;
-  name: string;
-  email: string;
+  name: string | null;
+  email: string | null;
   avatarUrl: string;
 }

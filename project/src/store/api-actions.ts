@@ -14,10 +14,15 @@ import { adaptCommentToClient, adaptFilmToClient, adaptReviewSendData } from '..
 import { redirectToRoute } from './action';
 import {
   loadFilmAction,
+  loadPromoAction,
   loadFilmsAction,
   loadSameFilmsAction,
   loadReviewsAction,
-  setReviewSendingAction
+  setReviewSendingAction,
+  loadUserDataAction,
+  setIsPlayLoadedAction,
+  loadPlayFilmAction,
+  loadMyListAction
 } from './client-data/client-data';
 import { setAuthorizationAction } from './user-process/user-process';
 import { setErrorAction } from './client-process/client-process';
@@ -33,6 +38,18 @@ export const fetchFilmsAction = createAsyncThunk(
       store.dispatch(
         loadFilmsAction(data.map((film) => adaptFilmToClient(film))),
       );
+    } catch (error) {
+      errorHandle(error);
+    }
+  },
+);
+
+export const fetchPromoAction = createAsyncThunk(
+  'data/fetchPromo',
+  async () => {
+    try {
+      const { data } = await api.get<FilmDataServer>(APIRoute.Promo);
+      store.dispatch(loadPromoAction(adaptFilmToClient(data)));
     } catch (error) {
       errorHandle(error);
     }
@@ -117,11 +134,10 @@ export const loginAction = createAsyncThunk(
   'client/login',
   async ({ email, password }: AuthData) => {
     try {
-      const {
-        data: { token },
-      } = await api.post<UserData>(APIRoute.Login, { email, password });
-      saveToken(token);
+      const { data } = await api.post<UserData>(APIRoute.Login, { email, password });
+      saveToken(data.token);
       store.dispatch(setAuthorizationAction(AuthorizationStatus.Auth));
+      store.dispatch(loadUserDataAction(data));
       store.dispatch(redirectToRoute(AppRoute.Root));
     } catch (error) {
       errorHandle(error);
@@ -139,3 +155,47 @@ export const logoutAction = createAsyncThunk('client/logout', async () => {
     errorHandle(error);
   }
 });
+
+export const fetchPlayFilmAction = createAsyncThunk(
+  'data/fetchFilm',
+  async (filmId: number) => {
+    store.dispatch(setIsPlayLoadedAction(false));
+    try {
+      const { data } = await api.get<FilmDataServer>(`${APIRoute.Films}/${filmId}`);
+      store.dispatch(loadPlayFilmAction(adaptFilmToClient(data)));
+    } catch (error) {
+      errorHandle(error);
+      store.dispatch(redirectToRoute(AppRoute.NotFound));
+    }
+  },
+);
+
+export const fetchMyListAction = createAsyncThunk(
+  'data/fetchMyList',
+  async () => {
+    try {
+      const { data } = await api.get<FilmDataServerList>(APIRoute.Favorite);
+      store.dispatch(
+        loadMyListAction(data.map((film) => adaptFilmToClient(film))),
+      );
+    } catch (error) {
+      errorHandle(error);
+    }
+  },
+);
+
+type FavoriteStatus = {
+  filmId: number;
+  status: number;
+}
+
+export const sendFilmStatus = createAsyncThunk(
+  'data/sendFavoriteFilmStatus',
+  async ({ filmId, status }: FavoriteStatus) => {
+    try {
+      await api.put<FilmDataServer>(`${APIRoute.Favorite}/${filmId}/${status}`);
+    } catch (error) {
+      errorHandle(error);
+    }
+  },
+);

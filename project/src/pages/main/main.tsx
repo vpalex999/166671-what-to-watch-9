@@ -5,20 +5,16 @@ import FilmList from '../../components/film-list/film-list';
 import CatalogGenresList from '../../components/catalog-genres-list/catalog-genres-list';
 import LogoLight from '../../components/logo-light/logo-light';
 import Footer from '../../components/page-footer/page-footer';
-import { FilmData } from '../../types/film';
 import { useAppSelector } from '../../hooks';
 import { getSameFilms } from '../../util';
 import ButtonMore from '../../components/button-more/button-more';
 import { useEffect, useState } from 'react';
 import FilmCardBg from '../../components/film-card-bg/film-card-bg';
 import FilmCardDesc from '../../components/film-card-desc/film-card-desc';
+import LoadingScreen from '../../components/loading-screen/loading-screen';
 
-type MainScreenProps = {
-  promo: FilmData;
-};
-
-function MainPage({ promo }: MainScreenProps): JSX.Element {
-  const { films } = useAppSelector(({ DATA }) => DATA);
+function MainPage(): JSX.Element {
+  const { films, promo } = useAppSelector(({ DATA }) => DATA);
   const { filterGenre, filmCountPerStep } = useAppSelector(({ CLIENT }) => CLIENT);
 
   const [filmCount, setFilmCount] = useState(filmCountPerStep);
@@ -34,6 +30,10 @@ function MainPage({ promo }: MainScreenProps): JSX.Element {
 
   const displayFilm = getSameFilms(filterGenre, films);
 
+  if (promo === null){
+    return (<LoadingScreen />);
+  }
+
   return (
     <div>
       <section className="film-card">
@@ -47,7 +47,7 @@ function MainPage({ promo }: MainScreenProps): JSX.Element {
           <div className="film-card__info">
             <FilmCardPoster poster={promo.poster} alt={promo.title} />
             <FilmCardDesc data={promo}>
-              <CardButtons />
+              <CardButtons filmId={promo.id}/>
             </FilmCardDesc>
           </div>
         </div>

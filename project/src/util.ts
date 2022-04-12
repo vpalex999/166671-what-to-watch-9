@@ -1,6 +1,10 @@
+import dayjs from 'dayjs';
+import duration from 'dayjs/plugin/duration';
 import { ALL_GENRES, LevelRating } from './const';
 import { FilmData, FilmDataServer } from './types/film';
 import { ReviewData, ReviewDataServer, ReviewFromClientSend, ReviewToServerSend } from './types/review';
+
+dayjs.extend(duration);
 
 export const getSameFilms = (genre: string, films: FilmData[]): FilmData[] =>
   genre === ALL_GENRES
@@ -42,7 +46,7 @@ export const adaptFilmToClient = (film: FilmDataServer): FilmData => {
     poster: film.posterImage,
     genre: film.genre,
     released: film.released,
-    runTime: film.runTime.toString(),
+    runTime: film.runTime,
     director: film.director,
     starring: film.starring,
     description: film.description,
@@ -53,6 +57,7 @@ export const adaptFilmToClient = (film: FilmDataServer): FilmData => {
     },
     link: film.videoLink,
     trailer: film.previewVideoLink,
+    isFavorite: film.isFavorite,
   };
 
   return adaptedFilm;
@@ -78,4 +83,13 @@ export const adaptReviewSendData = (review: ReviewFromClientSend) => {
   };
 
   return adaptedReview;
+};
+
+export const formatRunTime = (runTime: number): string => {
+  const timeDuration = dayjs.duration(runTime, 'minutes');
+  if (runTime < 60) {
+    return timeDuration.format('-mm:ss');
+  }
+
+  return timeDuration.format('-HH:mm:ss');
 };

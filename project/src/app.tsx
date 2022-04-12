@@ -9,13 +9,12 @@ import PrivateRoute from './components/private-route/private-route';
 import NotFoundPage from './pages/not-found/not-found';
 import { AppRoute } from './const';
 import { useAppSelector } from './hooks';
-import { mokPlayerData } from './moks/player';
 import LoadingScreen from './components/loading-screen/loading-screen';
 import browserHistory from './browser-history';
 import HistoryRouter from './components/history-route/history-route';
 
 function App(): JSX.Element {
-  const { films, isDataLoaded } = useAppSelector(({ DATA }) => DATA);
+  const { isDataLoaded } = useAppSelector(({ DATA }) => DATA);
   if (!isDataLoaded) {
     return <LoadingScreen />;
   }
@@ -23,13 +22,13 @@ function App(): JSX.Element {
   return (
     <HistoryRouter history={browserHistory}>
       <Routes>
-        <Route path={AppRoute.Root} element={<MainPage promo={films[0]} />} />
+        <Route path={AppRoute.Root} element={<MainPage />} />
         <Route path={AppRoute.Login} element={<SignInPage />} />
         <Route
           path={AppRoute.MyList}
           element={
             <PrivateRoute>
-              <MyListPage films={films} />
+              <MyListPage />
             </PrivateRoute>
           }
         />
@@ -44,7 +43,7 @@ function App(): JSX.Element {
         />
         <Route
           path={AppRoute.Play}
-          element={<PlayPage data={mokPlayerData} />}
+          element={<PlayPage />}
         />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

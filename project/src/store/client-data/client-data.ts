@@ -4,11 +4,22 @@ import { ClientData } from '../../types/state';
 
 const initialState: ClientData = {
   films: [],
+  promo: null,
   isDataLoaded: false,
   film: null,
   sameFilms: [],
   reviews: [],
   reviewSendingStatus: ReviewSendingStatus.NoSending,
+  user: {
+    avatarUrl: 'img/avatar.jpg',
+    email: null,
+    id: null,
+    name: null,
+    token: '',
+  },
+  isPlayLoaded: false,
+  playFilm: null,
+  myList: [],
 };
 
 export const clientData = createSlice({
@@ -31,12 +42,38 @@ export const clientData = createSlice({
     setReviewSendingAction: (state, action) => {
       state.reviewSendingStatus = action.payload;
     },
+    loadPromoAction: (state, action) => {
+      state.promo = action.payload;
+    },
+    loadUserDataAction: (state, action) => {
+      state.user = action.payload;
+    },
+    setIsPlayLoadedAction: (state, action) => {
+      state.isPlayLoaded = action.payload;
+    },
+    loadPlayFilmAction: (state, action) => {
+      state.playFilm = action.payload;
+      state.isPlayLoaded = true;
+    },
+    loadMyListAction: (state, action) => {
+      state.myList = action.payload;
+    },
+    clearMyListAction: (state) => {
+      state.myList = [];
+    },
   },
 });
 
 export const {
   loadFilmsAction,
+  loadPromoAction,
   loadFilmAction,
   loadSameFilmsAction,
   loadReviewsAction,
-  setReviewSendingAction } = clientData.actions;
+  setReviewSendingAction,
+  loadUserDataAction,
+  setIsPlayLoadedAction,
+  loadPlayFilmAction,
+  loadMyListAction,
+  clearMyListAction,
+} = clientData.actions;
