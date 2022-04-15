@@ -53,7 +53,7 @@ export const clientData = createSlice({
     },
     loadPlayFilmAction: (state, action) => {
       state.playFilm = action.payload;
-      state.isPlayLoaded = true;
+      state.isPlayLoaded = false;
     },
     loadMyListAction: (state, action) => {
       state.myList = action.payload;

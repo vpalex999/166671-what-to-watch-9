@@ -2,7 +2,7 @@ import { ALL_GENRES } from '../../const';
 import {
   changeGenreAction,
   clientProcess,
-  setErrorAction,
+  setErrorAction
 } from './client-process';
 
 describe('Reducer: clientProcess', () => {
