@@ -1,4 +1,8 @@
-import { ReviewData } from '../types/review';
+import {
+  ReviewData,
+  ReviewDataServer,
+  ReviewFromClientSend
+} from '../types/review';
 
 export const getMockReview = (): ReviewData => ({
   id: '5578',
@@ -11,7 +15,7 @@ export const getMockReview = (): ReviewData => ({
 
 export const getMockReviews = () => [getMockReview()];
 
-export const getMockFetchReview = () => ({
+export const getMockFetchReview = (): ReviewDataServer => ({
   comment: 'some review text',
   date: '2022-02-27',
   id: 5578,
@@ -23,3 +27,9 @@ export const getMockFetchReview = () => ({
 });
 
 export const getMockFetchReviews = () => [getMockFetchReview()];
+
+export const getMockReviewFromClientSend = (): ReviewFromClientSend => ({
+  filmId: '5578',
+  rating: '8.9',
+  'review-text': 'some review text',
+});

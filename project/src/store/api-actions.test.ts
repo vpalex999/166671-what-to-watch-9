@@ -7,13 +7,15 @@ import { createAPI } from '../services/api';
 import { State } from '../types/state';
 import {
   checkAuthAction,
+  clearErrorAction,
   fetchFilmAction,
   fetchFilmsAction,
   fetchPromoAction,
   fetchReviewsAction,
   fetchSameFilmsAction,
   loginAction,
-  logoutAction
+  logoutAction,
+  sendReviewAction
 } from './api-actions';
 import { setAuthorizationAction } from './user-process/user-process';
 import { AuthData } from '../types/auth-data';
@@ -23,11 +25,13 @@ import {
   loadPromoAction,
   loadReviewsAction,
   loadSameFilmsAction,
-  loadUserDataAction
+  loadUserDataAction,
+  setReviewSendingAction
 } from './client-data/client-data';
 import { redirectToRoute } from './action';
 import { getMockFetchFilm } from '../mocks/film';
-import { getMockFetchReviews } from '../mocks/review';
+import { getMockFetchReviews, getMockReviewFromClientSend } from '../mocks/review';
+import { setErrorAction } from './client-process/client-process';
 
 describe('Async actions', () => {
   const api = createAPI();
@@ -157,8 +161,34 @@ describe('Async actions', () => {
 
     await store.dispatch(fetchReviewsAction(filmId));
 
-    const actions = store.getActions().map(({type}) => type);
+    const actions = store.getActions().map(({ type }) => type);
 
     expect(actions).toContain(loadReviewsAction.toString());
+  });
+
+  it('should dispatch sendReviewAction when POST /comments:id/', async () => {
+    const mockFetchReviewToSend = getMockReviewFromClientSend();
+    const store = mockStore();
+    mockAPI
+      .onPost(`${APIRoute.Comments}/${mockFetchReviewToSend.filmId}`)
+      .reply(200, []);
+
+    await store.dispatch(sendReviewAction(mockFetchReviewToSend));
+
+    const actions = store.getActions().map(({ type }) => type);
+
+    expect(actions).toContain(setReviewSendingAction.toString());
+    expect(actions).toContain(redirectToRoute.toString());
+  });
+
+  // TODO: тест выдаёт ошибку, нужно разобраться как тестировать с функцией setTimeout внутри.
+  it.skip('should dispatch clearErrorAction to store', () => {
+    const store = mockStore();
+
+    store.dispatch(clearErrorAction());
+
+    const actions = store.getActions().map(({type}) => type);
+
+    expect(actions).toContain(setErrorAction.toString());
   });
 });
