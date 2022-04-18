@@ -10,3 +10,16 @@ export const getMockReview = (): ReviewData => ({
 });
 
 export const getMockReviews = () => [getMockReview()];
+
+export const getMockFetchReview = () => ({
+  comment: 'some review text',
+  date: '2022-02-27',
+  id: 5578,
+  rating: 8.9,
+  user: {
+    id: 8888,
+    name: 'vpalex',
+  },
+});
+
+export const getMockFetchReviews = () => [getMockFetchReview()];
