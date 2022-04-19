@@ -204,12 +204,12 @@ export const fetchPlayFilmAction = createAsyncThunk<void, number, {
   state: State,
   extra: AxiosInstance
 }>(
-  'data/fetchFilm',
+  'data/fetchPlayFilm',
   async (filmId, { dispatch, extra: api }) => {
-    dispatch(setIsPlayLoadedAction(false));
     try {
       const { data } = await api.get<FilmDataServer>(`${APIRoute.Films}/${filmId}`);
       dispatch(loadPlayFilmAction(adaptFilmToClient(data)));
+      dispatch(setIsPlayLoadedAction(false));
     } catch (error) {
       errorHandle(error);
       dispatch(redirectToRoute(AppRoute.NotFound));

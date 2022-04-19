@@ -10,11 +10,14 @@ import {
   clearErrorAction,
   fetchFilmAction,
   fetchFilmsAction,
+  fetchMyListAction,
+  fetchPlayFilmAction,
   fetchPromoAction,
   fetchReviewsAction,
   fetchSameFilmsAction,
   loginAction,
   logoutAction,
+  sendFilmStatus,
   sendReviewAction
 } from './api-actions';
 import { setAuthorizationAction } from './user-process/user-process';
@@ -22,15 +25,21 @@ import { AuthData } from '../types/auth-data';
 import {
   loadFilmAction,
   loadFilmsAction,
+  loadMyListAction,
+  loadPlayFilmAction,
   loadPromoAction,
   loadReviewsAction,
   loadSameFilmsAction,
   loadUserDataAction,
+  setIsPlayLoadedAction,
   setReviewSendingAction
 } from './client-data/client-data';
 import { redirectToRoute } from './action';
 import { getMockFetchFilm } from '../mocks/film';
-import { getMockFetchReviews, getMockReviewFromClientSend } from '../mocks/review';
+import {
+  getMockFetchReviews,
+  getMockReviewFromClientSend
+} from '../mocks/review';
 import { setErrorAction } from './client-process/client-process';
 
 describe('Async actions', () => {
@@ -187,8 +196,48 @@ describe('Async actions', () => {
 
     store.dispatch(clearErrorAction());
 
-    const actions = store.getActions().map(({type}) => type);
+    const actions = store.getActions().map(({ type }) => type);
 
     expect(actions).toContain(setErrorAction.toString());
+  });
+
+  it('should dispatch fetchPlayFilmAction to GET / films:id', async () => {
+    const store = mockStore();
+    const filmId = 1234;
+    const mockFetchFilm = getMockFetchFilm();
+
+    mockAPI.onGet(`${APIRoute.Films}/${filmId}`).reply(200, mockFetchFilm);
+
+    await store.dispatch(fetchPlayFilmAction(filmId));
+
+    const actions = store.getActions().map(({ type }) => type);
+
+    expect(actions).toContain(setIsPlayLoadedAction.toString());
+    expect(actions).toContain(loadPlayFilmAction.toString());
+  });
+
+  it('should dispatch fetchMyListAction to GET / favorite', async () => {
+    const store = mockStore();
+    const mockFetchMyList = [getMockFetchFilm()];
+
+    mockAPI.onGet(APIRoute.Favorite).reply(200, mockFetchMyList);
+
+    await store.dispatch(fetchMyListAction());
+
+    const actions = store.getActions().map(({ type }) => type);
+
+    expect(actions).toContain(loadMyListAction.toString());
+  });
+
+  it('should send Favorite film status to server PUT / favorite/id/<0,1>', async () => {
+    const store = mockStore();
+    const filmId = 1234;
+    const filmStatus = 1;
+
+    mockAPI
+      .onPut(`${APIRoute.Favorite}/${filmId}/${filmStatus}`)
+      .reply(200, []);
+
+    await store.dispatch(sendFilmStatus({filmId, status: filmStatus}));
   });
 });
