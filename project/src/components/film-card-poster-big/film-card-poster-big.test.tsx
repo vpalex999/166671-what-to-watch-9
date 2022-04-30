@@ -1,18 +1,17 @@
 import { render, screen } from '@testing-library/react';
-import FilmCardPoster from './film-card-poster';
+import FilmCardPosterBig from './film-card-poster-big';
 
-describe('Component: FilmCardPoster', () => {
+
+describe('Component: FilmCardPosterBig', () => {
   it('should render correctly', () => {
     const props = {
       poster: 'poster.png',
       alt: 'alt text',
-      className: undefined,
     };
 
-    render(<FilmCardPoster {...props} />);
+    render(<FilmCardPosterBig {...props} />);
 
     expect(screen.getByRole('img')).toHaveAttribute('src', props.poster);
     expect(screen.getByAltText(props.alt)).toBeInTheDocument();
   });
-
 });
