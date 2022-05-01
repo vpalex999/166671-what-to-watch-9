@@ -10,8 +10,6 @@ import NotFoundPage from './pages/not-found/not-found';
 import { AppRoute } from './const';
 import { useAppSelector } from './hooks';
 import LoadingScreen from './components/loading-screen/loading-screen';
-import browserHistory from './browser-history';
-import HistoryRouter from './components/history-route/history-route';
 
 function App(): JSX.Element {
   const { isDataLoaded } = useAppSelector(({ DATA }) => DATA);
@@ -20,34 +18,32 @@ function App(): JSX.Element {
   }
 
   return (
-    <HistoryRouter history={browserHistory}>
-      <Routes>
-        <Route path={AppRoute.Root} element={<MainPage />} />
-        <Route path={AppRoute.Login} element={<SignInPage />} />
-        <Route
-          path={AppRoute.MyList}
-          element={
-            <PrivateRoute>
-              <MyListPage />
-            </PrivateRoute>
-          }
-        />
-        <Route path={AppRoute.Film} element={<FilmPage />} />
-        <Route
-          path={AppRoute.AddReview}
-          element={
-            <PrivateRoute>
-              <AddReviewPage />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path={AppRoute.Play}
-          element={<PlayPage />}
-        />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </HistoryRouter>
+    <Routes>
+      <Route path={AppRoute.Root} element={<MainPage />} />
+      <Route path={AppRoute.Login} element={<SignInPage />} />
+      <Route
+        path={AppRoute.MyList}
+        element={
+          <PrivateRoute>
+            <MyListPage />
+          </PrivateRoute>
+        }
+      />
+      <Route path={AppRoute.Film} element={<FilmPage />} />
+      <Route
+        path={AppRoute.AddReview}
+        element={
+          <PrivateRoute>
+            <AddReviewPage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path={AppRoute.Play}
+        element={<PlayPage />}
+      />
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
   );
 }
 
