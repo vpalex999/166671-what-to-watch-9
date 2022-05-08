@@ -20,6 +20,7 @@ function UserBlock(): JSX.Element {
         <li className="user-block__item">
           <div
             className="user-block__avatar"
+            data-testid="avatar"
             onClick={() => {
               dispatch(fetchMyListAction());
               navigate(AppRoute.MyList);
@@ -32,8 +33,7 @@ function UserBlock(): JSX.Element {
           <Link
             to={AppRoute.Root}
             className="user-block__link"
-            onClick={(evt) => {
-              evt.preventDefault();
+            onClick={() => {
               dispatch(logoutAction());
               dispatch(clearMyListAction());
             }}
